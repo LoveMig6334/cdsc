@@ -3,9 +3,11 @@ import { useEffect } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { useRouter } from 'next/navigation'
 import { FaSignInAlt, FaTrophy, FaMusic, FaUserGraduate, FaBars } from 'react-icons/fa';
 import { MdMeetingRoom } from "react-icons/md";
 import { useState } from 'react';
+import { FcGoogle } from "react-icons/fc";
 
 // Animation variants
 const containerVariants = {
@@ -82,7 +84,7 @@ export default function Home() {
     {
       id: 2,
       title: 'จองห้องดนตรี',
-      description: 'จองห้องดนตรีล่วงหน้าได้อย่างสะดวก ไม่ต้องรอคิวนาน',
+      description: 'จองห้องดนตรีผ่านระบบออนไลน์ ลดการจองที่ซับซ้อน',
       icon: <FaMusic className="text-blue-500 text-4xl mb-4" />,
       color: 'bg-blue-50 border-blue-200'
     },
@@ -95,12 +97,14 @@ export default function Home() {
     },
     {
       id: 4,
-      title: 'พอร์ตโฟลิโอ',
-      description: 'แสดงผลงานและความสำเร็จของนักเรียนในรูปแบบพอร์ตโฟลิโอ',
+      title: 'พอร์ตพี่มีให้ดู',
+      description: 'แสดง Portfolio ของรุ่นพี่ปีก่อนๆ ให้ดูเป็นแนวทาง',
       icon: <FaUserGraduate className="text-blue-500 text-4xl mb-4" />,
       color: 'bg-blue-50 border-blue-200'
     }
   ];
+
+  const router = useRouter();
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -232,13 +236,13 @@ export default function Home() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <button 
+              {/* <button 
                 onClick={handleLogin}
                 className="px-6 sm:px-8 py-2 sm:py-3 bg-gradient-to-r from-yellow-400 to-yellow-500 text-white rounded-lg shadow-lg hover:from-yellow-500 hover:to-yellow-600 transition duration-300 font-medium flex items-center mx-auto"
               >
                 <FaSignInAlt className="mr-2" />
                 เริ่มต้นใช้งาน
-              </button>
+              </button> */}
             </motion.div>
           </motion.div>
         </div>
@@ -290,7 +294,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-12 sm:py-16 bg-gradient-to-r from-blue-500 to-blue-700 relative overflow-hidden">
+      <section className="py-24 sm:py-24 bg-gradient-to-r from-blue-500 to-blue-700 relative overflow-hidden" id='login'>
         <div className="absolute inset-0 opacity-10">
           <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
             <defs>
@@ -305,7 +309,7 @@ export default function Home() {
             <rect width="100%" height="100%" fill="url(#grid)" />
           </svg>
         </div>
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div 
             className="text-center"
             initial={{ opacity: 0, y: 20 }}
@@ -313,17 +317,20 @@ export default function Home() {
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-white">พร้อมที่จะเริ่มต้นใช้งานแล้วหรือยัง?</h2>
-            <p className="mt-4 text-base sm:text-lg md:text-xl text-blue-100">สมัครสมาชิกหรือเข้าสู่ระบบเพื่อใช้งานฟีเจอร์ทั้งหมดบนแพลตฟอร์ม CD Smart Campus</p>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-white">Login เพื่อใช้งาน</h2>
+            <p className="mt-4 text-base sm:text-lg md:text-xl text-blue-100">ลงชื่อเข้าใช้ด้วยบัญชี Gmail @chitraldaschool.ac.th</p>
             <div className="mt-6 sm:mt-8 flex justify-center">
               <motion.button
-                onClick={handleLogin}
-                className="px-6 sm:px-8 py-2 sm:py-3 bg-yellow-500 text-white rounded-lg shadow-lg hover:bg-yellow-600 transition duration-300 font-medium flex items-center"
+                onClick={() => router.push('/login')}
+                className="px-6 font-bold sm:px-8 py-2 sm:py-3 bg-yellow-500 text-white rounded-lg shadow-lg hover:bg-yellow-600 transition duration-300 flex items-center"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <FaSignInAlt className="mr-2" />
-                เข้าสู่ระบบด้วย OAuth
+
+                <div className="bg-white p-2 rounded-full mr-2">
+                  <FcGoogle className="text-lg" />
+                </div>
+                เข้าสู่ระบบด้วย Gmail
               </motion.button>
             </div>
           </motion.div>
@@ -332,32 +339,9 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="mb-6 md:mb-0 text-center md:text-left">
-              <div className="flex items-center justify-center md:justify-start">
-                <div className="text-blue-400 mr-2">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="currentColor" />
-                    <path d="M2 17L12 22L22 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </div>
-                <span className="text-xl font-bold text-white">CD Smart Campus</span>
-              </div>
-              <p className="text-gray-400 mt-2">แพลตฟอร์มระบบบริการนักเรียนออนไลน์</p>
-            </div>
-            <div className="flex flex-wrap justify-center gap-4 md:gap-6">
-              <a href="#" className="text-gray-300 hover:text-white transition duration-300">หน้าหลัก</a>
-              <a href="#" className="text-gray-300 hover:text-white transition duration-300">บริการ</a>
-              <a href="#" className="text-gray-300 hover:text-white transition duration-300">เกี่ยวกับเรา</a>
-              <a href="#" className="text-gray-300 hover:text-white transition duration-300">ติดต่อ</a>
-            </div>
-          </div>
           <div className="border-t border-gray-800 mt-6 sm:mt-8 pt-6 text-center">
             <p className="text-gray-400">&copy; {new Date().getFullYear()} CD Smart Campus. สงวนลิขสิทธิ์</p>
           </div>
-        </div>
       </footer>
     </div>
   );
