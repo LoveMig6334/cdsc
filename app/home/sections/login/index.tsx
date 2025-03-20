@@ -26,16 +26,33 @@ export const Login = () => {
             className="text-center"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-white">Login เพื่อใช้งาน</h2>
-            <p className="mt-4 text-base sm:text-lg md:text-xl text-blue-100">ลงชื่อเข้าใช้ด้วยบัญชี Gmail @chitraldaschool.ac.th</p>
+            <motion.h2 
+            className="text-2xl sm:text-3xl font-extrabold text-white"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay : 0.75, ease: "easeOut"}}>
+            Login เพื่อใช้งาน
+            </motion.h2>
+
+            <motion.p 
+            className="mt-4 text-base sm:text-lg md:text-xl text-blue-100"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay : 0.5, ease: "easeOut"}}>
+            
+                ลงชื่อเข้าใช้ด้วยบัญชี Gmail @chitraladaschool.ac.th
+            </motion.p>
+
             <div className="mt-6 sm:mt-8 flex justify-center">
               <motion.button
                 onClick={() => router.push('/login')}
                 className="px-6 font-bold sm:px-8 py-2 sm:py-3 bg-yellow-500 text-white rounded-lg shadow-lg hover:bg-yellow-600 transition duration-300 flex items-center"
-                whileHover={{ scale: 1.05 }}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, delay : 0.5, ease: "easeOut"}}
+                whileHover={{ scale: 1 }}
                 whileTap={{ scale: 0.95 }}
               >
 
