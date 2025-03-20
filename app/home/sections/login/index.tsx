@@ -7,6 +7,7 @@ export const Login = () => {
     const router = useRouter();
     return (
         <section className="min-h-screen flex items-center justify-center sm:py-24 bg-gradient-to-r from-blue-500 to-blue-700 relative overflow-hidden" id='login'>
+
         <div className="absolute inset-0 opacity-10">
           <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
             <defs>
@@ -21,18 +22,15 @@ export const Login = () => {
             <rect width="100%" height="100%" fill="url(#grid)" />
           </svg>
         </div>
+
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div 
-            className="text-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
+          <div className="text-center">
             <motion.h2 
             className="text-2xl sm:text-3xl font-extrabold text-white"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay : 0.75, ease: "easeOut"}}>
+            transition={{ duration: 1, delay : 0.5, ease: "easeOut"}}>
             Login เพื่อใช้งาน
             </motion.h2>
 
@@ -40,9 +38,8 @@ export const Login = () => {
             className="mt-4 text-base sm:text-lg md:text-xl text-blue-100"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay : 0.5, ease: "easeOut"}}>
-            
-                ลงชื่อเข้าใช้ด้วยบัญชี Gmail @chitraladaschool.ac.th
+            transition={{ duration: 1, delay : 0.75, ease: "easeOut"}}>
+            ลงชื่อเข้าใช้ด้วยบัญชี Gmail @chitraladaschool.ac.th
             </motion.p>
 
             <div className="mt-6 sm:mt-8 flex justify-center">
@@ -51,7 +48,7 @@ export const Login = () => {
                 className="px-6 font-bold sm:px-8 py-2 sm:py-3 bg-yellow-500 text-white rounded-lg shadow-lg hover:bg-yellow-600 transition duration-300 flex items-center"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, delay : 0.5, ease: "easeOut"}}
+                transition={{ duration: 1, delay : 1, ease: "easeOut"}}
                 whileHover={{ scale: 1 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -62,8 +59,10 @@ export const Login = () => {
                 เข้าสู่ระบบด้วย Gmail
               </motion.button>
             </div>
-          </motion.div>
+
+          </div>
         </div>
+
       </section>
     );
 };
