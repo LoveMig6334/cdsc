@@ -131,7 +131,7 @@ export const Features = () => {
                   whileHover={{ 
                     y: -10, 
                     boxShadow: "0 15px 30px rgba(0,0,0,0.1)",
-                    transition: { duration: 0.3 } 
+                    transition: { duration: 1 } 
                   }}
                 >
                   {/* Shine effect overlay */}

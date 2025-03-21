@@ -34,6 +34,14 @@ export const Login = () => {
             Login เพื่อใช้งาน
             </motion.h2>
 
+            {/* <motion.span 
+              className="absolute left-0 h-1 bg-white"
+              initial={{ width: 0 }}
+              whileInView={{ width: "100%" }}
+              viewport={{ once: true }}
+              transition={{ delay: 1.5, duration: 0.8 }}
+            /> */}
+
             <motion.p 
             className="mt-4 text-base sm:text-lg md:text-xl text-blue-100"
             initial={{ opacity: 0, y: 50 }}
