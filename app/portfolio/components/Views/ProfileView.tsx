@@ -60,7 +60,7 @@ const ProfileView: React.FC<ProfileViewProps> = ({
             </div>
             <div className="bg-gray-50 p-4 rounded-lg">
               <p className="text-sm text-gray-500 mb-1">เกรดเฉลี่ย</p>
-              <p className="text-xl font-semibold text-blue-700">{student.gpa}</p>
+              <p className="text-xl font-semibold text-blue-700">{student.gpa.toFixed(2)}</p>
             </div>
           </div>
           
@@ -70,12 +70,11 @@ const ProfileView: React.FC<ProfileViewProps> = ({
                 <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
               </svg>
             </span>
-            ข้อมูลเพิ่มเติม
+            คำแนะนำแก่รุ่นน้อง
           </h2>
           
           <p className="text-gray-700">
-            นี่เป็นข้อมูลตัวอย่างสำหรับ {student.name} ที่กำลังศึกษาอยู่ที่ {university.name} คณะ{faculty.name}
-            คุณสามารถเพิ่มข้อมูลเพิ่มเติมเช่น ความสนใจ ผลงาน หรือข้อมูลการติดต่อได้ที่นี่
+            " รักแรกพบ แท้จริงเป็นอย่างไร "
           </p>
         </div>
       </div>
