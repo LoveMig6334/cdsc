@@ -2,6 +2,7 @@ import React from 'react';
 import BackButton from '../UI/BackButton';
 import { Student, University, Faculty } from '../../PortfolioTypes';
 import Image from 'next/image';
+import GoogleDrivePDFViewer from '../DrivePDF';
 
 interface ProfileViewProps {
   student: Student;
@@ -76,6 +77,18 @@ const ProfileView: React.FC<ProfileViewProps> = ({
           <p className="text-gray-700">
             " รักแรกพบ แท้จริงเป็นอย่างไร "
           </p>
+
+          <h2 className="text-xl font-bold text-gray-800 mb-4 mt-10 flex items-center">
+            <span className="w-8 h-8 bg-yellow-400 rounded-full mr-2 flex items-center justify-center text-white">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+              </svg>
+            </span>
+            Portfolio
+          </h2>
+
+          <GoogleDrivePDFViewer fileId="https://drive.google.com/file/d/1COqE92_dPE_0EK8KSaeTdgbolou8xNcw/view?usp=sharing" />
+
         </div>
       </div>
     </div>
