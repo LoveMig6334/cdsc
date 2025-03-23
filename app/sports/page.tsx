@@ -5,7 +5,6 @@ import React, { useState } from 'react';
 import Navbar from '../components/NavBar';
 import { FaMedal } from "react-icons/fa6";
 import BackButton from '../components/Back';
-
 export default function SportsEventNav() {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
   

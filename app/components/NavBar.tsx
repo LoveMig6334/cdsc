@@ -12,11 +12,11 @@ const Navbar = () => {
   // Default navigation links with icons
   const defaultLinks = [
     { title: "หน้าหลัก", icon: <FaHome />, href: "/" },
-    { title: "หลักสูตร", icon: <FaBook />, href: "/courses" },
-    { title: "นักเรียน", icon: <FaUsers />, href: "/students" },
-    { title: "เกี่ยวกับเรา", icon: <FaInfoCircle />, href: "/about" },
+    // { title: "หลักสูตร", icon: <FaBook />, href: "/courses" },
+    // { title: "นักเรียน", icon: <FaUsers />, href: "/students" },
+    // { title: "เกี่ยวกับเรา", icon: <FaInfoCircle />, href: "/about" },
     { title: "ปฏิทิน", icon: <FaCalendarAlt />, href: "/calendar" },
-    { title: "ช่วยเหลือ", icon: <FaQuestion />, href: "/help" }
+    // { title: "ช่วยเหลือ", icon: <FaQuestion />, href: "/help" }
   ];
 
   const handleLogin = () => {
