@@ -80,8 +80,13 @@ export async function GET(request: NextRequest): Promise<NextResponse<CalendarRe
     const calendarId = process.env.GOOGLE_CALENDAR_ID;
     const SCOPES = 'https://www.googleapis.com/auth/calendar.readonly';
     const client_email = process.env.GOOGLE_CLIENT_EMAIL;
-    const private_key = process.env.GOOGLE_SECRET_KEY?.replace(/\\n/g, '\n');
-    
+    const private_key_base64 = process.env.GOOGLE_SECRET_KEY
+    if (!private_key_base64) {
+      throw new Error("GOOGLE_SECRET_KEY_BASE64 environment variable is not set");
+    }
+
+    const private_key = Buffer.from(private_key_base64, 'base64').toString('ascii');
+
     // สร้าง JWT auth client
     const auth = new google.auth.JWT({
       email: client_email,
