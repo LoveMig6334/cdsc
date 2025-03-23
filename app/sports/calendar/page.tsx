@@ -4,6 +4,7 @@ import { format, parseISO, startOfMonth, endOfMonth, eachDayOfInterval, isSameMo
 import { th } from 'date-fns/locale';
 import { ChevronLeft, ChevronRight, Calendar as CalendarIcon, X } from 'lucide-react';
 import Navbar from '@/app/components/NavBar';
+import BackButton from '../../components/Back';
 
 // กำหนดรูปแบบของ Event
 interface CalendarEvent {
@@ -222,9 +223,10 @@ export default function Home() {
   return (
     <>
     <Navbar />
+    <BackButton />
     <div className="min-h-screen bg-gray-50 ">
       <div className="max-w-6xl mx-auto py-24 px-4">
-        <h1 className="text-3xl font-bold text-blue-800 mb-8 text-center">ปฏิทินกิจกรรม</h1>
+        <h1 className="text-3xl font-bold text-blue-800 mb-8 text-center">ปฏิทินการแข่งขัน</h1>
         
         {/* แก้ไขตรงนี้: ใช้ flex-col และ flex-col-reverse ในการเรียงลำดับบนอุปกรณ์ต่างๆ */}
         <div className="flex flex-col lg:flex-row gap-8">
