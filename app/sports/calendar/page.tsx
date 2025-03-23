@@ -66,7 +66,7 @@ export default function Home() {
     end: endOfMonth(currentDate)
   });
 
-  // กรองกิจกรรมที่กำลังจะมาถึง (นับจากวันนี้เป็นต้นไป และไม่เกิน 10 รายการ)
+  // กรองกิจกรรมที่กำลังจะมาถึง (นับจากวันนี้เป็นต้นไป และไม่เกิน 5 รายการ)
   const today = new Date();
   const upcomingEvents = [...events]
     .filter(event => new Date(event.start.dateTime) >= today)
@@ -91,137 +91,153 @@ export default function Home() {
     setSelectedEvent(null);
   };
 
+  // ส่วนของกิจกรรมที่กำลังจะมาถึง
+  const UpcomingEventsList = () => (
+    <div className="bg-white rounded-xl shadow-lg overflow-hidden h-full">
+      <div className="bg-yellow-500 text-white p-4">
+        <h2 className="text-xl font-semibold flex items-center">
+          <CalendarIcon size={20} className="mr-2" />
+          กิจกรรมที่กำลังจะมาถึง
+        </h2>
+      </div>
+      
+      <div className="p-4">
+        {loading ? (
+          <div className="text-center py-8">
+            <div className="w-12 h-12 border-4 border-blue-800 border-t-transparent rounded-full animate-spin mx-auto"></div>
+            <p className="mt-2 text-gray-600">กำลังโหลดข้อมูล...</p>
+          </div>
+        ) : error ? (
+          <div className="text-center py-8">
+            <p className="text-red-500">{error}</p>
+          </div>
+        ) : upcomingEvents.length === 0 ? (
+          <div className="text-center py-8 text-gray-500">
+            ไม่มีกิจกรรมที่กำลังจะมาถึง
+          </div>
+        ) : (
+          <ul className="space-y-4">
+            {upcomingEvents.map(event => (
+              <li 
+                key={event.id} 
+                className="bg-gray-100 border-b border-gray-100 pb-4 last:border-b-0 last:pb-0 cursor-pointer hover:bg-blue-50 p-2 rounded transition"
+                onClick={() => openEventDetails(event)}
+              >
+                <h3 className="font-semibold text-blue-800">{event.summary}</h3>
+                <div className="text-sm text-gray-600 mt-1">
+                  {format(parseISO(event.start.dateTime), 'EEE d MMM yyyy', { locale: th })}
+                </div>
+                <div className="text-sm text-gray-600">
+                  {format(parseISO(event.start.dateTime), 'HH:mm')} - {format(parseISO(event.end.dateTime), 'HH:mm')}
+                </div>
+                {event.location && (
+                  <div className="text-sm text-gray-600 mt-1">
+                    📍 {event.location}
+                  </div>
+                )}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    </div>
+  );
+
+  // ส่วนของปฏิทินรายเดือน
+  const MonthlyCalendar = () => (
+    <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+      {/* ส่วนหัวปฏิทิน */}
+      <div className="bg-blue-900 text-white p-4 flex items-center justify-between">
+        <button 
+          onClick={prevMonth} 
+          className="p-2 rounded-full hover:bg-blue-800 transition"
+        >
+          <ChevronLeft size={20} />
+        </button>
+        
+        <h2 className="text-xl font-semibold">
+          {format(currentDate, 'MMMM yyyy', { locale: th })}
+        </h2>
+        
+        <button 
+          onClick={nextMonth} 
+          className="p-2 rounded-full hover:bg-blue-800 transition"
+        >
+          <ChevronRight size={20} />
+        </button>
+      </div>
+      
+      {/* วันในสัปดาห์ */}
+      <div className="grid grid-cols-7 bg-blue-50">
+        {['อา', 'จ', 'อ', 'พ', 'พฤ', 'ศ', 'ส'].map(day => (
+          <div key={day} className="text-center py-2 font-semibold text-blue-800">
+            {day}
+          </div>
+        ))}
+      </div>
+      
+      {/* วันในเดือน */}
+      <div className="grid grid-cols-7">
+        {/* วันว่างก่อนวันแรกของเดือน */}
+        {Array.from({ length: days[0].getDay() }).map((_, index) => (
+          <div key={`empty-${index}`} className="h-24 border border-gray-100 bg-gray-50"></div>
+        ))}
+        
+        {/* วันในเดือน */}
+        {days.map(day => {
+          const dayEvents = getEventsForDay(day);
+          const isToday = isSameDay(day, today);
+          
+          return (
+            <div 
+              key={day.toString()} 
+              className={`h-24 border border-gray-100 p-1 overflow-hidden ${
+                isToday ? 'bg-yellow-50 border-yellow-400' : ''
+              }`}
+            >
+              <div className={`text-right mb-1 ${isToday ? 'text-yellow-600 font-bold' : 'text-gray-700'}`}>
+                {format(day, 'd')}
+              </div>
+              
+              <div className="overflow-y-auto h-16">
+                {dayEvents.map(event => (
+                  <div 
+                    key={event.id} 
+                    className="text-xs p-1 mb-1 rounded bg-blue-100 text-blue-800 truncate cursor-pointer hover:bg-blue-200 transition"
+                    title={event.summary}
+                    onClick={() => openEventDetails(event)}
+                  >
+                    {event.summary}
+                  </div>
+                ))}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-6xl mx-auto py-8 px-4">
         <h1 className="text-3xl font-bold text-blue-800 mb-8 text-center">ปฏิทินกิจกรรม</h1>
         
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* ปฏิทินแสดงกิจกรรมรายเดือน */}
-          <div className="lg:col-span-2">
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-              {/* ส่วนหัวปฏิทิน */}
-              <div className="bg-blue-900 text-white p-4 flex items-center justify-between">
-                <button 
-                  onClick={prevMonth} 
-                  className="p-2 rounded-full hover:bg-blue-800 transition"
-                >
-                  <ChevronLeft size={20} />
-                </button>
-                
-                <h2 className="text-xl font-semibold">
-                  {format(currentDate, 'MMMM yyyy', { locale: th })}
-                </h2>
-                
-                <button 
-                  onClick={nextMonth} 
-                  className="p-2 rounded-full hover:bg-blue-800 transition"
-                >
-                  <ChevronRight size={20} />
-                </button>
-              </div>
-              
-              {/* วันในสัปดาห์ */}
-              <div className="grid grid-cols-7 bg-blue-50">
-                {['อา', 'จ', 'อ', 'พ', 'พฤ', 'ศ', 'ส'].map(day => (
-                  <div key={day} className="text-center py-2 font-semibold text-blue-800">
-                    {day}
-                  </div>
-                ))}
-              </div>
-              
-              {/* วันในเดือน */}
-              <div className="grid grid-cols-7">
-                {/* วันว่างก่อนวันแรกของเดือน */}
-                {Array.from({ length: days[0].getDay() }).map((_, index) => (
-                  <div key={`empty-${index}`} className="h-24 border border-gray-100 bg-gray-50"></div>
-                ))}
-                
-                {/* วันในเดือน */}
-                {days.map(day => {
-                  const dayEvents = getEventsForDay(day);
-                  const isToday = isSameDay(day, today);
-                  
-                  return (
-                    <div 
-                      key={day.toString()} 
-                      className={`h-24 border border-gray-100 p-1 overflow-hidden ${
-                        isToday ? 'bg-yellow-50 border-yellow-400' : ''
-                      }`}
-                    >
-                      <div className={`text-right mb-1 ${isToday ? 'text-yellow-600 font-bold' : 'text-gray-700'}`}>
-                        {format(day, 'd')}
-                      </div>
-                      
-                      <div className="overflow-y-auto h-16">
-                        {dayEvents.map(event => (
-                          <div 
-                            key={event.id} 
-                            className="text-xs p-1 mb-1 rounded bg-blue-100 text-blue-800 truncate cursor-pointer hover:bg-blue-200 transition"
-                            title={event.summary}
-                            onClick={() => openEventDetails(event)}
-                          >
-                            {format(parseISO(event.start.dateTime), 'HH:mm')} {event.summary}
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
+        {/* แก้ไขตรงนี้: ใช้ flex-col และ flex-col-reverse ในการเรียงลำดับบนอุปกรณ์ต่างๆ */}
+        <div className="flex flex-col lg:flex-row gap-8">
+          {/* แสดงกิจกรรมที่กำลังจะมาถึงอยู่ด้านบนเมื่อใช้บนมือถือ */}
+          <div className="lg:hidden w-full mb-6">
+            <UpcomingEventsList />
           </div>
           
-          {/* กิจกรรมที่กำลังจะมาถึง */}
-          <div>
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden h-full">
-              <div className="bg-yellow-500 text-white p-4">
-                <h2 className="text-xl font-semibold flex items-center">
-                  <CalendarIcon size={20} className="mr-2" />
-                  กิจกรรมที่กำลังจะมาถึง
-                </h2>
-              </div>
-              
-              <div className="p-4">
-                {loading ? (
-                  <div className="text-center py-8">
-                    <div className="w-12 h-12 border-4 border-blue-800 border-t-transparent rounded-full animate-spin mx-auto"></div>
-                    <p className="mt-2 text-gray-600">กำลังโหลดข้อมูล...</p>
-                  </div>
-                ) : error ? (
-                  <div className="text-center py-8">
-                    <p className="text-red-500">{error}</p>
-                  </div>
-                ) : upcomingEvents.length === 0 ? (
-                  <div className="text-center py-8 text-gray-500">
-                    ไม่มีกิจกรรมที่กำลังจะมาถึง
-                  </div>
-                ) : (
-                  <ul className="space-y-4">
-                    {upcomingEvents.map(event => (
-                      <li 
-                        key={event.id} 
-                        className="bg-gray-100 border-b border-gray-100 pb-4 last:border-b-0 last:pb-0 cursor-pointer hover:bg-blue-50 p-2 rounded transition"
-                        onClick={() => openEventDetails(event)}
-                      >
-                        <h3 className="font-semibold text-blue-800">{event.summary}</h3>
-                        <div className="text-sm text-gray-600 mt-1">
-                          {format(parseISO(event.start.dateTime), 'EEE d MMM yyyy', { locale: th })}
-                        </div>
-                        <div className="text-sm text-gray-600">
-                          {format(parseISO(event.start.dateTime), 'HH:mm')} - {format(parseISO(event.end.dateTime), 'HH:mm')}
-                        </div>
-                        {event.location && (
-                          <div className="text-sm text-gray-600 mt-1">
-                            📍 {event.location}
-                          </div>
-                        )}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-            </div>
+          {/* ปฏิทินแสดงกิจกรรมรายเดือน */}
+          <div className="w-full lg:w-2/3">
+            <MonthlyCalendar />
+          </div>
+          
+          {/* กิจกรรมที่กำลังจะมาถึง (แสดงเฉพาะบนหน้าจอใหญ่) */}
+          <div className="hidden lg:block lg:w-1/3">
+            <UpcomingEventsList />
           </div>
         </div>
       </div>
