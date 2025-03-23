@@ -80,7 +80,7 @@ export async function GET(request: NextRequest): Promise<NextResponse<CalendarRe
     const calendarId = process.env.GOOGLE_CALENDAR_ID;
     const SCOPES = 'https://www.googleapis.com/auth/calendar.readonly';
     const client_email = process.env.GOOGLE_CLIENT_EMAIL;
-    const private_key = process.env.GOOGLE_SECRET_KEY?.replace(/"/g, '');
+    const private_key = process.env.GOOGLE_SECRET_KEY?.replace(/\/\/n/g, "/n");;
     
     // สร้าง JWT auth client
     const auth = new google.auth.JWT({
@@ -90,7 +90,7 @@ export async function GET(request: NextRequest): Promise<NextResponse<CalendarRe
     });
 
     const calendar = google.calendar({ version: 'v3', auth });
-    
+
     // ดึงข้อมูลกิจกรรมจาก Google Calendar
     const response = await calendar.events.list({
       calendarId: calendarId,
