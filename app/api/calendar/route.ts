@@ -80,7 +80,7 @@ export async function GET(request: NextRequest): Promise<NextResponse<CalendarRe
     const calendarId = process.env.GOOGLE_CALENDAR_ID;
     const SCOPES = 'https://www.googleapis.com/auth/calendar.readonly';
     const client_email = process.env.GOOGLE_CLIENT_EMAIL;
-    const private_key = process.env.GOOGLE_SECRET_KEY;
+    const private_key = process.env.GOOGLE_SECRET_KEY?.replace(/\\n/g, '\n');
     
     // สร้าง JWT auth client
     const auth = new google.auth.JWT({
