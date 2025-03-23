@@ -53,9 +53,9 @@ interface ErrorResponse {
 export async function GET(request: NextRequest): Promise<NextResponse<CalendarResponse | ErrorResponse>> {
   try {
     // ตรวจสอบว่ามี env variables ที่จำเป็นหรือไม่
-    if (!process.env.GOOGLE_CREDENTIALS || !process.env.GOOGLE_CALENDAR_ID) {
+    if (!process.env.GOOGLE_CALENDAR_ID) {
       console.error('Missing Google Calendar credentials', {
-        credentials: !!process.env.GOOGLE_CREDENTIALS,
+        // credentials: !!process.env.GOOGLE_CREDENTIALS,
         calendarId: !!process.env.GOOGLE_CALENDAR_ID
       });
       
@@ -80,7 +80,7 @@ export async function GET(request: NextRequest): Promise<NextResponse<CalendarRe
     const calendarId = process.env.GOOGLE_CALENDAR_ID;
     const SCOPES = 'https://www.googleapis.com/auth/calendar.readonly';
     const client_email = process.env.GOOGLE_CLIENT_EMAIL;
-    const private_key = process.env.GOOGLE_SECRET_KEY?.replace(/\\n/g, '\n');
+    const private_key = process.env.GOOGLE_SECRET_KEY;
     
     // สร้าง JWT auth client
     const auth = new google.auth.JWT({
