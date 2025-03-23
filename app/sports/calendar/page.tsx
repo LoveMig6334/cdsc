@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { format, parseISO, startOfMonth, endOfMonth, eachDayOfInterval, isSameMonth, isSameDay, addMonths, subMonths } from 'date-fns';
 import { th } from 'date-fns/locale';
 import { ChevronLeft, ChevronRight, Calendar as CalendarIcon, X } from 'lucide-react';
+import Navbar from '@/app/components/NavBar';
 
 // กำหนดรูปแบบของ Event
 interface CalendarEvent {
@@ -219,8 +220,10 @@ export default function Home() {
   );
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="max-w-6xl mx-auto py-8 px-4">
+    <>
+    <Navbar />
+    <div className="min-h-screen bg-gray-50 ">
+      <div className="max-w-6xl mx-auto py-24 px-4">
         <h1 className="text-3xl font-bold text-blue-800 mb-8 text-center">ปฏิทินกิจกรรม</h1>
         
         {/* แก้ไขตรงนี้: ใช้ flex-col และ flex-col-reverse ในการเรียงลำดับบนอุปกรณ์ต่างๆ */}
@@ -289,5 +292,6 @@ export default function Home() {
         </div>
       )}
     </div>
+    </>
   );
 }
