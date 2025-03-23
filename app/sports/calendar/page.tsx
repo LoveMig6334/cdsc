@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { format, parseISO, startOfMonth, endOfMonth, eachDayOfInterval, isSameMonth, isSameDay, addMonths, subMonths } from 'date-fns';
 import { th } from 'date-fns/locale';
-import { ChevronLeft, ChevronRight, Calendar as CalendarIcon } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Calendar as CalendarIcon, X } from 'lucide-react';
 
 // กำหนดรูปแบบของ Event
 interface CalendarEvent {
@@ -25,6 +25,7 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [currentDate, setCurrentDate] = useState(new Date());
+  const [selectedEvent, setSelectedEvent] = useState<CalendarEvent | null>(null);
   
   // ดึงข้อมูล event จาก Google Calendar API
   useEffect(() => {
@@ -78,6 +79,16 @@ export default function Home() {
       const eventDate = parseISO(event.start.dateTime);
       return isSameDay(eventDate, day);
     });
+  };
+
+  // ฟังก์ชันเปิดรายละเอียดกิจกรรม
+  const openEventDetails = (event: CalendarEvent) => {
+    setSelectedEvent(event);
+  };
+
+  // ฟังก์ชันปิดรายละเอียดกิจกรรม
+  const closeEventDetails = () => {
+    setSelectedEvent(null);
   };
 
   return (
@@ -146,8 +157,9 @@ export default function Home() {
                         {dayEvents.map(event => (
                           <div 
                             key={event.id} 
-                            className="text-xs p-1 mb-1 rounded bg-blue-100 text-blue-800 truncate"
+                            className="text-xs p-1 mb-1 rounded bg-blue-100 text-blue-800 truncate cursor-pointer hover:bg-blue-200 transition"
                             title={event.summary}
+                            onClick={() => openEventDetails(event)}
                           >
                             {format(parseISO(event.start.dateTime), 'HH:mm')} {event.summary}
                           </div>
@@ -187,7 +199,11 @@ export default function Home() {
                 ) : (
                   <ul className="space-y-4">
                     {upcomingEvents.map(event => (
-                      <li key={event.id} className="border-b border-gray-100 pb-4 last:border-b-0 last:pb-0">
+                      <li 
+                        key={event.id} 
+                        className="bg-gray-100 border-b border-gray-100 pb-4 last:border-b-0 last:pb-0 cursor-pointer hover:bg-blue-50 p-2 rounded transition"
+                        onClick={() => openEventDetails(event)}
+                      >
                         <h3 className="font-semibold text-blue-800">{event.summary}</h3>
                         <div className="text-sm text-gray-600 mt-1">
                           {format(parseISO(event.start.dateTime), 'EEE d MMM yyyy', { locale: th })}
@@ -209,6 +225,53 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      {/* Modal แสดงรายละเอียดกิจกรรมด้วย backdrop blur */}
+      {selectedEvent && (
+        <div className="fixed inset-0 backdrop-blur-sm bg-white/30 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-xl shadow-xl max-w-md w-full overflow-hidden">
+            <div className="bg-blue-800 text-white p-4 flex justify-between items-center">
+              <h3 className="font-semibold text-lg truncate">{selectedEvent.summary}</h3>
+              <button 
+                onClick={closeEventDetails}
+                className="text-white hover:bg-blue-700 rounded-full p-1"
+              >
+                <X size={20} />
+              </button>
+            </div>
+            
+            <div className="p-4">
+              <div className="mb-4">
+                <div className="flex items-center mb-2">
+                  <CalendarIcon size={16} className="text-blue-600 mr-2" />
+                  <div>
+                    <div>{format(parseISO(selectedEvent.start.dateTime), 'EEEE d MMMM yyyy', { locale: th })}</div>
+                    <div className="text-gray-600">
+                      {format(parseISO(selectedEvent.start.dateTime), 'HH:mm')} - {format(parseISO(selectedEvent.end.dateTime), 'HH:mm')}
+                    </div>
+                  </div>
+                </div>
+                
+                {selectedEvent.location && (
+                  <div className="flex items-start mb-2">
+                    <span className="text-blue-600 mr-2">📍</span>
+                    <div className="text-gray-700">{selectedEvent.location}</div>
+                  </div>
+                )}
+              </div>
+              
+              {selectedEvent.description && (
+                <div className="border-t border-gray-100 pt-4">
+                  <h4 className="font-medium mb-2 text-blue-800">รายละเอียด</h4>
+                  <div className="text-gray-700 whitespace-pre-line">
+                    {selectedEvent.description}
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
