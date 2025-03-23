@@ -1,61 +1,142 @@
 import { google } from 'googleapis';
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
-// กำหนดค่า OAuth2 client
-const GOOGLE_PRIVATE_KEY = process.env.GOOGLE_PRIVATE_KEY 
-  ? process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n') 
-  : '';
-const GOOGLE_CLIENT_EMAIL = process.env.GOOGLE_CLIENT_EMAIL || '';
-const GOOGLE_CALENDAR_ID = process.env.GOOGLE_CALENDAR_ID || '';
+// กำหนด interface สำหรับข้อมูล event
+interface CalendarEvent {
+  id: string;
+  summary: string;
+  description?: string;
+  start: {
+    dateTime: string;
+    timeZone: string;
+  };
+  end: {
+    dateTime: string;
+    timeZone: string;
+  };
+  location?: string;
+  htmlLink?: string;
+}
 
+interface GoogleCalendarEvent {
+  id?: string;
+  summary?: string;
+  description?: string;
+  start?: {
+    dateTime?: string;
+    date?: string;
+    timeZone?: string;
+  };
+  end?: {
+    dateTime?: string;
+    date?: string;
+    timeZone?: string;
+  };
+  location?: string;
+  htmlLink?: string;
+}
 
-export async function GET(request: Request) {
-  console.log('Client email exists:', !!process.env.GOOGLE_CLIENT_EMAIL);
-  console.log('Private key exists:', !!process.env.GOOGLE_PRIVATE_KEY);
-  console.log('Calendar ID exists:', !!process.env.GOOGLE_CALENDAR_ID);
-  const { searchParams } = new URL(request.url);
-  const start = searchParams.get('start');
-  const end = searchParams.get('end');
-  
-  if (!start || !end) {
-    return NextResponse.json(
-      { error: 'Start and end dates are required' },
-      { status: 400 }
-    );
-  }
-  
+// กำหนด interface สำหรับ response
+interface CalendarResponse {
+  events: CalendarEvent[];
+  count: number;
+  timeZone?: string;
+}
+
+// กำหนด interface สำหรับ error response
+interface ErrorResponse {
+  error: string;
+  message?: string;
+  details?: any;
+}
+
+export async function GET(request: NextRequest): Promise<NextResponse<CalendarResponse | ErrorResponse>> {
   try {
-    // ตรวจสอบการตั้งค่า
-    if (!GOOGLE_CLIENT_EMAIL || !GOOGLE_PRIVATE_KEY || !GOOGLE_CALENDAR_ID) {
-      console.error('Missing Google Calendar credentials');
+    // ตรวจสอบว่ามี env variables ที่จำเป็นหรือไม่
+    if (!process.env.GOOGLE_CREDENTIALS || !process.env.GOOGLE_CALENDAR_ID) {
+      console.error('Missing Google Calendar credentials', {
+        credentials: !!process.env.GOOGLE_CREDENTIALS,
+        calendarId: !!process.env.GOOGLE_CALENDAR_ID
+      });
+      
       return NextResponse.json(
         { error: 'Server configuration error - missing credentials' },
         { status: 500 }
       );
     }
+
+    const { searchParams } = new URL(request.url);
+    // เปลี่ยนชื่อพารามิเตอร์ให้ตรงกับที่ส่งมาจาก frontend
+    const start = searchParams.get('startDate');
+    const end = searchParams.get('endDate');
+    
+    if (!start || !end) {
+      return NextResponse.json(
+        { error: 'Start and end dates are required' },
+        { status: 400 }
+      );
+    }
+
+    const CREDENTIALS = JSON.parse(process.env.GOOGLE_CREDENTIALS);
+    const calendarId = process.env.GOOGLE_CALENDAR_ID;
+    const SCOPES = 'https://www.googleapis.com/auth/calendar.readonly';
     
     // สร้าง JWT auth client
     const auth = new google.auth.JWT({
-      email: GOOGLE_CLIENT_EMAIL,
-      key: GOOGLE_PRIVATE_KEY,
-      scopes: ['https://www.googleapis.com/auth/calendar.readonly']
+      email: CREDENTIALS.client_email,
+      key: CREDENTIALS.private_key,
+      scopes: [SCOPES]
     });
 
-    // สร้าง calendar client
     const calendar = google.calendar({ version: 'v3', auth });
     
-    // เรียกใช้ API Google Calendar
+    // ดึงข้อมูลกิจกรรมจาก Google Calendar
     const response = await calendar.events.list({
-      calendarId: GOOGLE_CALENDAR_ID,
-      timeMin: `${start}T00:00:00Z`,
-      timeMax: `${end}T23:59:59Z`,
+      calendarId: calendarId,
+      timeMin: start,
+      timeMax: end,
       singleEvents: true,
       orderBy: 'startTime',
     });
-    
-    return NextResponse.json({ events: response.data.items || [] });
+
+    // แปลงข้อมูลตาม interface ที่กำหนด
+    const events: CalendarEvent[] = (response.data.items as GoogleCalendarEvent[])?.map(event => {
+      // สร้าง start และ end objects ที่ถูกต้องตาม CalendarEvent interface
+      const startObj: CalendarEvent['start'] = {
+        dateTime: event.start?.dateTime || event.start?.date || new Date().toISOString(),
+        timeZone: event.start?.timeZone || 'UTC'
+      };
+      
+      const endObj: CalendarEvent['end'] = {
+        dateTime: event.end?.dateTime || event.end?.date || new Date().toISOString(),
+        timeZone: event.end?.timeZone || 'UTC'
+      };
+      
+      return {
+        id: event.id || '',
+        summary: event.summary || '',
+        description: event.description,
+        start: startObj,
+        end: endObj,
+        location: event.location,
+        htmlLink: event.htmlLink
+      };
+    }) || [];
+
+    // เพิ่ม return statement ที่ขาดหายไป
+    return NextResponse.json({
+      events,
+      count: events.length,
+      timeZone: response.data.timeZone || undefined // Convert null to undefined
+    });
+
   } catch (error: any) {
     console.error('Error fetching calendar events:', error);
+    
+    if (error.response) {
+      console.error('Response error data:', JSON.stringify(error.response.data));
+      console.error('Response error status:', error.response.status);
+    }
     
     return NextResponse.json(
       {
@@ -66,6 +147,4 @@ export async function GET(request: Request) {
       { status: 500 }
     );
   }
-
-  
 }

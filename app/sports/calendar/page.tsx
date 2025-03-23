@@ -27,33 +27,33 @@ export default function Home() {
   const [currentDate, setCurrentDate] = useState(new Date());
   
   // ดึงข้อมูล event จาก Google Calendar API
-//   useEffect(() => {
-//     const fetchEvents = async () => {
-//       try {
-//         setLoading(true);
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        setLoading(true);
         
-//         // กำหนดช่วงเวลาที่ต้องการดึงข้อมูล (เริ่มต้นและสิ้นสุดของเดือนปัจจุบัน)
-//         const start = startOfMonth(currentDate);
-//         const end = endOfMonth(currentDate);
+        // กำหนดช่วงเวลาที่ต้องการดึงข้อมูล (เริ่มต้นและสิ้นสุดของเดือนปัจจุบัน)
+        const start = startOfMonth(currentDate);
+        const end = endOfMonth(currentDate);
         
-//         const response = await fetch(`/api/calendar?startDate=${start.toISOString()}&endDate=${end.toISOString()}`);
+        const response = await fetch(`/api/calendar?startDate=${start.toISOString()}&endDate=${end.toISOString()}`);
         
-//         if (!response.ok) {
-//           throw new Error('Failed to fetch events');
-//         }
+        if (!response.ok) {
+          throw new Error('Failed to fetch events');
+        }
         
-//         const data = await response.json();
-//         setEvents(data.events);
-//       } catch (err) {
-//         console.error('Error fetching events:', err);
-//         setError("ไม่สามารถดึงข้อมูลกิจกรรมได้ โปรดลองอีกครั้งในภายหลัง");
-//       } finally {
-//         setLoading(false);
-//       }
-//     };
+        const data = await response.json();
+        setEvents(data.events);
+      } catch (err) {
+        console.error('Error fetching events:', err);
+        setError("ไม่สามารถดึงข้อมูลกิจกรรมได้ โปรดลองอีกครั้งในภายหลัง");
+      } finally {
+        setLoading(false);
+      }
+    };
 
-//     fetchEvents();
-//   }, [currentDate]);
+    fetchEvents();
+  }, [currentDate]);
 
   // ฟังก์ชันเปลี่ยนเดือน
   const nextMonth = () => setCurrentDate(addMonths(currentDate, 1));
