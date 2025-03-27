@@ -77,7 +77,7 @@ export async function GET(request: NextRequest): Promise<NextResponse<CalendarRe
       );
     }
 
-    const calendarId = process.env.CD_CALENDAR_ID;
+    const calendarId = process.env.GOOGLE_CALENDAR_ID;
     const SCOPES = 'https://www.googleapis.com/auth/calendar.readonly';
     const client_email = process.env.GOOGLE_CLIENT_EMAIL;
     const private_key_base64 = process.env.GOOGLE_SECRET_KEY
