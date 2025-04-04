@@ -10,7 +10,7 @@ const Header: React.FC<HeaderProps> = ({ searchTerm, setSearchTerm }) => {
   return (
     <div className="bg-blue-700 text-white py-4 px-6 shadow-md">
       <div className="container mx-auto">
-        <h1 className="text-2xl font-bold mb-4 text-center">พอร์ตพี่มีให้น้องดู</h1>
+        <h1 className="text-2xl font-bold mb-4 text-center ">พอร์ตพี่มีให้น้องดู</h1>
         <div className="relative w-full max-w-2xl mx-auto">
           <input
             type="text"
