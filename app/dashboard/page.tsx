@@ -22,28 +22,28 @@ export default function StudentServicesDashboard() {
   const serviceCards = [
     {
       title: "CD Sports",
-      description: "เข้าถึงข้อมูลการแข่งขันกีฬาสี ตารางแข่งขัน และผลคะแนนล่าสุด",
+      description: "ดูผลการแข่งขันกิจกรรมต่างๆ ภายในโรงเรียนได้อย่างรวดเร็ว",
       icon: (<MdSportsBasketball className='text-2xl sm:text-3xl' />),
       link: "/sports",
       ctaText: "เข้าสู่ CD Sports"
     },
     {
       title: "จองห้องดนตรี",
-      description: "จองห้องซ้อมดนตรี ตรวจสอบตารางการใช้งาน และยกเลิกการจอง",
+      description: "จองห้องดนตรีผ่านระบบออนไลน์ ลดการจองที่ซับซ้อน",
       icon: (<FaMusic className='text-2xl sm:text-3xl' />),
       link: "/music-room",
       ctaText: "จองห้องดนตรี"
     },
     {
       title: "จองห้องประชุม",
-      description: "จองห้องประชุมสำหรับการทำงานกลุ่มหรือจัดกิจกรรมนักเรียน",
+      description: "จองห้องประชุมสำหรับกิจกรรมกลุ่มและการประชุมต่างๆ",
       icon: (<MdMeetingRoom className='text-2xl sm:text-3xl' />),
       link: "/meeting-room",
       ctaText: "จองห้องประชุม"
     },
     {
-      title: "พอร์ตโฟลิโอนักเรียน",
-      description: "ดูความสำเร็จ ผลงาน และกิจกรรมที่เข้าร่วมของนักเรียน",
+      title: "พอร์ตพี่มีให้ดู",
+      description: "แสดง Portfolio ของรุ่นพี่ปีก่อนๆ ให้ดูเป็นแนวทาง",
       icon: (<IoIosPeople className='text-2xl sm:text-3xl' />),
       link: "/portfolio",
       ctaText: "ดูพอร์ตโฟลิโอ"
