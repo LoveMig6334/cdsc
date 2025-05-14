@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { format, parseISO, startOfMonth, endOfMonth, eachDayOfInterval, isSameMonth, isSameDay, addMonths, subMonths } from 'date-fns';
 import { th } from 'date-fns/locale';
 import { ChevronLeft, ChevronRight, Calendar as CalendarIcon, X } from 'lucide-react';
-import Navbar from '@/app/components/NavBar';
+import NormalNavbar from '../components/NormalNav';
 // import BackButton from '../../components/Back';
 
 // กำหนดรูปแบบของ Event
@@ -222,7 +222,7 @@ export default function Home() {
 
   return (
     <>
-    <Navbar />
+    <NormalNavbar />
     {/* <BackButton  */}
     <div className="min-h-screen bg-gray-50 ">
       <div className="max-w-6xl mx-auto py-24 px-4">
