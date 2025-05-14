@@ -83,7 +83,7 @@ export default function SportsEventNav() {
     <>
     <Navbar />
     <BackButton />
-    <section className="min-h-screen relative py-24 flex items-center justify-center relative overflow-hidden bg-gradient-to-b from-white via-blue-50 to-blue-100">
+    <section className="min-h-screen py-24 flex items-center justify-center relative overflow-hidden bg-gradient-to-b from-white via-blue-50 to-blue-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div 
           className="text-center mb-10 sm:mb-12 md:mb-16"
