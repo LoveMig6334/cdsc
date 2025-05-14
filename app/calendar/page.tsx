@@ -115,7 +115,7 @@ export default function Home() {
           </div>
         ) : upcomingEvents.length === 0 ? (
           <div className="text-center py-8 text-gray-500">
-            ไม่มีกิจกรรมที่กำลังจะมาถึง
+            ไม่มีกิจกรรมที่กำลังจะมาถึงในเดือนนี้
           </div>
         ) : (
           <ul className="space-y-4">
