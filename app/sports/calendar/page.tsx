@@ -226,7 +226,7 @@ export default function Home() {
     <BackButton />
     <div className="min-h-screen bg-gray-50 ">
       <div className="max-w-6xl mx-auto py-24 px-4">
-        <h1 className="text-3xl font-bold text-blue-800 mb-8 text-center">ปฏิทินการแข่งขัน</h1>
+        <h1 className="text-3xl font-bold text-blue-800 mb-8 text-center">ปฏิทินวิชาการ</h1>
         
         {/* แก้ไขตรงนี้: ใช้ flex-col และ flex-col-reverse ในการเรียงลำดับบนอุปกรณ์ต่างๆ */}
         <div className="flex flex-col lg:flex-row gap-8">
