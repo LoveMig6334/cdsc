@@ -21,7 +21,10 @@ const StudentCard: React.FC<StudentCardProps> = ({ student, onClick }) => {
             src={student.image}
             alt={student.name}
             className="w-full h-full object-cover rounded-full"
+            width={100}
+            height={100}
           />
+
         </div>
         <div>
           <h3 className="font-medium text-gray-800">{student.name}</h3>

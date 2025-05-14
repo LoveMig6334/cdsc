@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 // import { EngineeringIcon, ScienceIcon, BusinessIcon, AccountBalanceIcon, LocalHospitalIcon, ComputerIcon } from '@mui/icons-material';
 import { MdOutlineEngineering, MdBusiness, MdOutlineAccountBalance, MdLocalHospital, MdComputer } from "react-icons/md";
 import { GiMaterialsScience } from "react-icons/gi";
@@ -9,40 +9,40 @@ import UniversityView from './components/Views/UniversityView';
 import FacultyView from './components/Views/FacultyView';
 import ProfileView from './components/Views/ProfileView';
 import { University, Faculty, Student } from './PortfolioTypes';
-import CU from '@/app/portfolio/img/cu.png';
-import tu from '@/app/portfolio/img/tu.png';
-import mu from '@/app/portfolio/img/mu.png';
-import ku from '@/app/portfolio/img/ku.png';
-import cmu from '@/app/portfolio/img/cmu.png';
-import swu from '@/app/portfolio/img/swu.png';
-import theerat from '@/app/portfolio/img/theerat.jpg';
+// import CU from '@/app/portfolio/img/cu.png';
+// import tu from '@/app/portfolio/img/tu.png';
+// import mu from '@/app/portfolio/img/mu.png';
+// import ku from '@/app/portfolio/img/ku.png';
+// import cmu from '@/app/portfolio/img/cmu.png';
+// import swu from '@/app/portfolio/img/swu.png';
+// import theerat from '@/app/portfolio/img/theerat.jpg';
 
 
-const universities: University[] = [
-  { id: 1, name: 'จุฬาลงกรณ์มหาวิทยาลัย', image: CU },
-  { id: 2, name: 'มหาวิทยาลัยธรรมศาสตร์', image: tu },
-  { id: 3, name: 'มหาวิทยาลัยมหิดล', image: mu },
-  { id: 4, name: 'มหาวิทยาลัยเกษตรศาสตร์', image: ku },
-  { id: 5, name: 'มหาวิทยาลัยเชียงใหม่', image: cmu },
-  { id: 6, name: 'มหาวิทยาลัยศรีนครินวิโรศ', image: swu },
-];
+// const universities: University[] = [
+//   { id: 1, name: 'จุฬาลงกรณ์มหาวิทยาลัย', image: CU },
+//   { id: 2, name: 'มหาวิทยาลัยธรรมศาสตร์', image: tu },
+//   { id: 3, name: 'มหาวิทยาลัยมหิดล', image: mu },
+//   { id: 4, name: 'มหาวิทยาลัยเกษตรศาสตร์', image: ku },
+//   { id: 5, name: 'มหาวิทยาลัยเชียงใหม่', image: cmu },
+//   { id: 6, name: 'มหาวิทยาลัยศรีนครินวิโรศ', image: swu },
+// ];
 
-const faculties: Faculty[] = [
-  { id: 1, name: 'วิศวกรรมศาสตร์', icon: <MdOutlineEngineering />, universities: [1, 2, 3, 4, 5] },
-  { id: 2, name: 'วิทยาศาสตร์', icon: <GiMaterialsScience />, universities: [1, 2, 3, 4, 5, 6] },
-  { id: 3, name: 'พาณิชยศาสตร์และการบัญชี', icon: <MdBusiness />, universities: [1, 2, 3, 4] },
-  { id: 4, name: 'นิติศาสตร์', icon: <MdOutlineAccountBalance />, universities: [1, 2, 5] },
-  { id: 5, name: 'แพทยศาสตร์', icon: <MdLocalHospital />, universities: [1, 2, 3, 5] },
-  { id: 6, name: 'เทคโนโลยีสารสนเทศ', icon: <MdComputer />, universities: [2, 3, 4, 5] },
-];
+// const faculties: Faculty[] = [
+//   { id: 1, name: 'วิศวกรรมศาสตร์', icon: <MdOutlineEngineering />, universities: [1, 2, 3, 4, 5] },
+//   { id: 2, name: 'วิทยาศาสตร์', icon: <GiMaterialsScience />, universities: [1, 2, 3, 4, 5, 6] },
+//   { id: 3, name: 'พาณิชยศาสตร์และการบัญชี', icon: <MdBusiness />, universities: [1, 2, 3, 4] },
+//   { id: 4, name: 'นิติศาสตร์', icon: <MdOutlineAccountBalance />, universities: [1, 2, 5] },
+//   { id: 5, name: 'แพทยศาสตร์', icon: <MdLocalHospital />, universities: [1, 2, 3, 5] },
+//   { id: 6, name: 'เทคโนโลยีสารสนเทศ', icon: <MdComputer />, universities: [2, 3, 4, 5] },
+// ];
 
-const students: Student[] = [
-  { id: 1, name: 'ธีรัตม์ดลฉัตร ฉัตรชัย', universityId: 1, facultyId: 1, year: 3, gpa: 4.00, image: theerat },
-  { id: 2, name: 'ธีรัตม์ดลฉัตร ฉัตรชัย', universityId: 1, facultyId: 2, year: 3, gpa: 4.00, image: theerat },
-  { id: 3, name: 'ธีรัตม์ดลฉัตร ฉัตรชัย', universityId: 1, facultyId: 3, year: 3, gpa: 4.00, image: theerat },
-  { id: 4, name: 'ธีรัตม์ดลฉัตร ฉัตรชัย', universityId: 2, facultyId: 1, year: 3, gpa: 4.00, image: theerat },
-  { id: 5, name: 'ธีรัตม์ดลฉัตร ฉัตรชัย', universityId: 2, facultyId: 2, year: 3, gpa: 4.00, image: theerat },
-];
+// const students: Student[] = [
+//   { id: 1, name: 'ธีรัตม์ดลฉัตร ฉัตรชัย', universityId: 1, facultyId: 1, year: 3, gpa: 4.00, image: theerat },
+//   { id: 2, name: 'ธีรัตม์ดลฉัตร ฉัตรชัย', universityId: 1, facultyId: 2, year: 3, gpa: 4.00, image: theerat },
+//   { id: 3, name: 'ธีรัตม์ดลฉัตร ฉัตรชัย', universityId: 1, facultyId: 3, year: 3, gpa: 4.00, image: theerat },
+//   { id: 4, name: 'ธีรัตม์ดลฉัตร ฉัตรชัย', universityId: 2, facultyId: 1, year: 3, gpa: 4.00, image: theerat },
+//   { id: 5, name: 'ธีรัตม์ดลฉัตร ฉัตรชัย', universityId: 2, facultyId: 2, year: 3, gpa: 4.00, image: theerat },
+// ];
 
 type ViewType = 'main' | 'university' | 'faculty' | 'profile';
 
@@ -53,6 +53,27 @@ export default function Directory() {
   const [selectedStudent, setSelectedStudent] = useState<Student | null>(null);
   const [filterTab, setFilterTab] = useState<number>(0);
   const [searchTerm, setSearchTerm] = useState<string>('');
+  const [universities, setUniversities] = useState<University[]>([]);
+  const [faculties, setFaculties] = useState<Faculty[]>([]);
+  const [students, setStudents] = useState<Student[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchPortfolioData() {
+      try {
+        const res = await fetch("/api/portfolio");
+        const data = await res.json();
+        setUniversities(data.universities);
+        setFaculties(data.faculties);
+        setStudents(data.students);
+      } catch (err) {
+        console.error("Failed to fetch portfolio data:", err);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+    fetchPortfolioData();
+  }, []);
 
   const handleTabChange = (newValue: number): void => {
     setFilterTab(newValue);
@@ -114,6 +135,15 @@ export default function Directory() {
   const filteredFaculties = faculties.filter(faculty => 
     faculty.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  if (isLoading) {
+    <div className="min-h-screen flex flex-col justify-center items-center bg-gray-50">
+      <p>กำลังโหลด...</p>
+    </div>
+  }
+
+  console.log("Portfolio data:", universities, faculties, students);
+
 
   // Error View if data is not found
   if (

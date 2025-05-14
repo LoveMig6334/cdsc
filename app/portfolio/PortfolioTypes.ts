@@ -4,13 +4,13 @@ import { StaticImageData } from 'next/image';
 export interface University {
   id: number;
   name: string;
-  image: StaticImageData;
+  image: string;
 }
 
 export interface Faculty {
   id: number;
   name: string;
-  icon: ReactNode;
+  icon: string;
   universities: number[];
 }
 
@@ -21,5 +21,5 @@ export interface Student {
   facultyId: number;
   year: number;
   gpa: number;
-  image: StaticImageData;
+  image: string;
 }
