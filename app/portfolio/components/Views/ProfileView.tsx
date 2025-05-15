@@ -114,7 +114,7 @@ const ProfileView: React.FC<ProfileViewProps> = ({
             Portfolio
           </h2>
 
-          <GoogleDrivePDFViewer fileId="https://drive.google.com/file/d/1COqE92_dPE_0EK8KSaeTdgbolou8xNcw/view?usp=sharing" />
+          <GoogleDrivePDFViewer fileId="https://drive.google.com/file/d/1vRoX0wzNbBoDdPKkIKEnKsCpRDkbJC7j/view?usp=sharing" />
         </div>
       </div>
     </div>
