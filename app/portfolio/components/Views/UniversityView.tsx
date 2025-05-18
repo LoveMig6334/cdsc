@@ -36,7 +36,9 @@ const UniversityView: React.FC<UniversityViewProps> = ({
       </div>
       
       <h2 className="text-2xl font-bold text-gray-800 mb-4">คณะทั้งหมด</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      
+      {faculties.length > 0 ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {faculties.map((faculty) => (
           <FacultyCard
             key={faculty.id}
@@ -45,6 +47,13 @@ const UniversityView: React.FC<UniversityViewProps> = ({
           />
         ))}
       </div>
+      ) : (
+        <div className="bg-blue-50 text-blue-700 p-6 rounded-lg text-center">
+          ยังไม่มีข้อมูล
+        </div>
+      )}
+
+
     </div>
   );
 };
