@@ -1,10 +1,10 @@
 "use client";
 import { motion } from "framer-motion";
-import { FcGoogle } from "react-icons/fc";
-import { useRouter } from "next/navigation";
+// import { FcGoogle } from "react-icons/fc";
+// import { useRouter } from "next/navigation";
 
 export const Login = () => {
-  const router = useRouter();
+  // const router = useRouter();
   return (
     <section
       className="min-h-screen flex items-center justify-center sm:py-24 bg-gradient-to-r from-blue-500 to-blue-700 relative overflow-hidden"
@@ -53,7 +53,7 @@ export const Login = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
           >
-            ยังไม่เปิดใช้งานในขณะนี้
+            ยังไม่เปิดให้บริการในขณะนี้
           </motion.h1>
 {/* 
           <motion.span 
