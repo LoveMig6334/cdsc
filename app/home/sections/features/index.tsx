@@ -69,7 +69,7 @@ export const Features = () => {
         {
           id: 2,
           title: 'จองห้องดนตรี',
-          description: 'จองห้องดนตรีผ่านระบบออนไลน์ ลดการจองที่ซับซ้อน',
+          description: 'จองห้องดนตรีผ่านระบบออนไลน์',
           icon: <FaMusic className="text-blue-500 text-4xl mb-4" />,
           color: 'bg-blue-50 border-blue-200',
           brightColor: 'from-blue-300 to-blue-100'
@@ -77,7 +77,7 @@ export const Features = () => {
         {
           id: 3,
           title: 'จองห้องประชุม',
-          description: 'จองห้องประชุมสำหรับกิจกรรมกลุ่มและการประชุมต่างๆ',
+          description: 'จองห้องประชุมห้องสมุด สำหรับการประชุมต่างๆ',
           icon: <MdMeetingRoom className="text-yellow-500 text-4xl mb-4" />,
           color: 'bg-yellow-50 border-yellow-200',
           brightColor: 'from-yellow-300 to-yellow-100'
@@ -85,7 +85,7 @@ export const Features = () => {
         {
           id: 4,
           title: 'พอร์ตพี่มีให้ดู',
-          description: 'แสดง Portfolio ของรุ่นพี่ปีก่อนๆ ให้ดูเป็นแนวทาง',
+          description: 'แสดง Portfolio และคำแนะนำของรุ่นพี่ปีก่อนๆ ให้ดูเป็นแนวทาง',
           icon: <FaUserGraduate className="text-blue-500 text-4xl mb-4" />,
           color: 'bg-blue-50 border-blue-200',
           brightColor: 'from-blue-300 to-blue-100'
