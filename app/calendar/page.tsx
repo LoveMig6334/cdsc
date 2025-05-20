@@ -70,6 +70,8 @@ export default function Home() {
 
   // กรองกิจกรรมที่กำลังจะมาถึง (นับจากวันนี้เป็นต้นไป และไม่เกิน 5 รายการ)
   const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  
   const upcomingEvents = [...events]
     .filter(event => new Date(event.start.dateTime) >= today)
     .sort((a, b) => new Date(a.start.dateTime).getTime() - new Date(b.start.dateTime).getTime())
