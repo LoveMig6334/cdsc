@@ -124,7 +124,7 @@ export default function Directory() {
     </div>;
   }
 
-  console.log("Portfolio data:", universities, faculties, students);
+  // console.log("Portfolio data:", universities, faculties, students);
 
   // Error View if data is not found
   if (
