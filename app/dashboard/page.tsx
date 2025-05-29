@@ -2,7 +2,7 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import React, { useState } from 'react';
-import Navbar from '../components/NavBar';
+// import Navbar from '../components/NavBar';
 import { FaMusic } from "react-icons/fa6";
 import { MdSportsBasketball, MdMeetingRoom } from "react-icons/md";
 import { IoIosPeople } from "react-icons/io";
@@ -78,7 +78,7 @@ export default function StudentServicesDashboard() {
 
   return (
     <>
-    <Navbar />
+    {/* <Navbar /> */}
     <section className="min-h-screen w-full relative py-12 md:py-16 lg:py-24 flex items-center justify-center overflow-hidden bg-gradient-to-b from-white via-blue-50 to-indigo-100">
       {/* Abstract background shapes - responsive adjustments */}
       <div className="absolute inset-0 overflow-hidden z-0">
