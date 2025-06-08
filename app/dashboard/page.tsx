@@ -49,14 +49,6 @@ export default function StudentServicesDashboard() {
   // Service cards data
   const serviceCards = [
     {
-      title: "CD Sports",
-      description: "",
-      icon: <MdSportsBasketball className="text-xl sm:text-2xl md:text-3xl" />,
-      link: "",
-      ctaText: "ยังไม่เปิดให้ใช้งาน",
-      isOpen: false,
-    },
-    {
       title: "จองห้องประชุม",
       description: "",
       icon: <MdMeetingRoom className="text-xl sm:text-2xl md:text-3xl" />,
@@ -71,6 +63,14 @@ export default function StudentServicesDashboard() {
       link: "https://calendar.app.google/b5YhjcRXLr9C2qjYA",
       ctaText: "จองห้องดนตรี",
       isOpen: true,
+    },
+    {
+      title: "CD Sports",
+      description: "",
+      icon: <MdSportsBasketball className="text-xl sm:text-2xl md:text-3xl" />,
+      link: "",
+      ctaText: "ยังไม่เปิดให้ใช้งาน",
+      isOpen: false,
     },
     {
       title: "พอร์ตพี่มีให้ดู",
