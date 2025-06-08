@@ -53,7 +53,7 @@ export default function StudentServicesDashboard() {
       description: "",
       icon: <MdMeetingRoom className="text-xl sm:text-2xl md:text-3xl" />,
       link: "https://calendar.app.google/WHXDg1d1RgnVoZcB6",
-      ctaText: "จองห้องประชุม",
+      ctaText: "จอง",
       isOpen: true,
     },
     {
@@ -61,7 +61,7 @@ export default function StudentServicesDashboard() {
       description: "",
       icon: <FaMusic className="text-xl sm:text-2xl md:text-3xl" />,
       link: "https://calendar.app.google/b5YhjcRXLr9C2qjYA",
-      ctaText: "จองห้องดนตรี",
+      ctaText: "จอง",
       isOpen: true,
     },
     {
