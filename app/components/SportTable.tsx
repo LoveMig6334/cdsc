@@ -189,7 +189,7 @@ export default function SportsDashboard() {
                       {getRankIcon(index + 1)}
                       <span className="text-lg sm:text-xl font-bold text-gray-700">#{index + 1}</span>
                       <div 
-                        className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-${getColorClasses(team.color)}-200 shadow-lg`}
+                        className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-r ${getColorClasses(team.color)} shadow-lg`}
                       ></div>
                       <span className="font-semibold text-gray-800 text-lg sm:text-xl">
                         {getColorName(team.color)}
