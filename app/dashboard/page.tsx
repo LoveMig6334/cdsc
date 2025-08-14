@@ -68,7 +68,7 @@ export default function StudentServicesDashboard() {
       title: "CD Sports",
       description: "",
       icon: <MdSportsBasketball className="text-xl sm:text-2xl md:text-3xl" />,
-      link: "/sports",
+      link: "https://liff.line.me/2006915917-M3RoQ7Ve",
       ctaText: "ดู",
       isOpen: true,
     },
