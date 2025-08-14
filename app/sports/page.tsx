@@ -4,6 +4,7 @@ import Link from 'next/link';
 import React, { useState } from 'react';
 import Navbar from '../components/NavBar';
 import { FaMedal } from "react-icons/fa6";
+import { MdOutlineScoreboard } from "react-icons/md";
 import BackButton from '../components/Back';
 export default function SportsEventNav() {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
@@ -19,14 +20,21 @@ export default function SportsEventNav() {
   const navCards = [
     {
       title: "ตารางเหรียญ",
-      description: "ดูอันดับและจำนวนเหรียญของแต่ละสีที่ได้รับจากการแข่งขัน",
+      description: "ดูอันดับและจำนวนเหรียญของแต่ละสี",
       icon: (<FaMedal className='text-2xl' />),
       link: "/sports/medals",
       ctaText: "ดูตารางเหรียญ"
     },
     {
+      title: "สกอร์การแข่งขันล่าสุด",
+      description: "ดูผลคะแนนการแข่งขันล่าสุด",
+      icon: (<MdOutlineScoreboard className='text-2xl' />),
+      link: "/sports/scores",
+      ctaText: "ดูสกอร์ล่าสุด"
+    },
+    {
       title: "ปฏิทินการแข่งขัน",
-      description: "ดูตารางเวลาและกำหนดการแข่งขันทั้งหมดของกีฬาสี",
+      description: "ดูตารางเวลาและกำหนดการแข่งขันทั้งหมด",
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 sm:h-10 sm:w-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
@@ -44,22 +52,6 @@ export default function SportsEventNav() {
       link: "/sports/calendar",
       ctaText: "ดูปฏิทิน"
     },
-    {
-      title: "สกอร์การแข่งขันล่าสุด",
-      description: "ดูผลคะแนนการแข่งขันล่าสุดของกีฬาประเภทต่างๆ",
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 sm:h-10 sm:w-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M12 20V10"></path>
-          <path d="M18 20V4"></path>
-          <path d="M6 20v-4"></path>
-          <path d="M2 8h10"></path>
-          <path d="M14 4h8"></path>
-          <path d="M4 16h4"></path>
-        </svg>
-      ),
-      link: "/sports/scores",
-      ctaText: "ดูสกอร์ล่าสุด"
-    }
   ];
 
   // Animation variants
@@ -81,36 +73,10 @@ export default function SportsEventNav() {
 
   return (
     <>
-    <Navbar />
-    <BackButton />
+    {/* <Navbar />
+    <BackButton /> */}
     <section className="min-h-screen py-24 flex items-center justify-center relative overflow-hidden bg-gradient-to-b from-white via-blue-50 to-blue-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <motion.div 
-          className="text-center mb-10 sm:mb-12 md:mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <motion.div
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex mb-4 sm:mb-6"
-          >
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-700 via-indigo-700 to-purple-700 bg-clip-text text-transparent mb-1 sm:mb-6">
-            CD Sports
-            </h2>
-          </motion.div>
-          
-          <motion.p 
-            className="text-base sm:text-lg text-gray-700 max-w-2xl mx-auto px-4"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-          >
-            เข้าถึงข้อมูลการแข่งขันกีฬาสีได้อย่างสะดวกและรวดเร็ว ทุกที่ทุกเวลา
-          </motion.p>
-        </motion.div>
+      <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 relative z-10">
         
         <motion.div 
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
