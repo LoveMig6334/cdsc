@@ -68,9 +68,9 @@ export default function StudentServicesDashboard() {
       title: "CD Sports",
       description: "",
       icon: <MdSportsBasketball className="text-xl sm:text-2xl md:text-3xl" />,
-      link: "",
-      ctaText: "ยังไม่เปิดให้ใช้งาน",
-      isOpen: false,
+      link: "/sports",
+      ctaText: "ดู",
+      isOpen: true,
     },
     {
       title: "พอร์ตพี่มีให้ดู",
