@@ -92,7 +92,7 @@ export default function SportsDashboard() {
 
         {/* Main Card */}
         <div className="bg-white rounded-xl sm:rounded-2xl shadow-xl overflow-hidden mx-2 sm:mx-0">
-          <div className="bg-gradient-to-r from-indigo-600 to-purple-600 px-4 sm:px-8 py-4 sm:py-6">
+          <div className="bg-amber-400 px-4 sm:px-8 py-4 sm:py-6">
             <h2 className="text-xl sm:text-2xl font-semibold text-white text-center">ตารางคะแนนรวม</h2>
           </div>
 
