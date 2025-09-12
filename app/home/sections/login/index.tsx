@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
-// import { FcGoogle } from "react-icons/fc";
-// import { useRouter } from "next/navigation";
+import { FcGoogle } from "react-icons/fc";
+import { useRouter } from "next/navigation";
 
 export const Login = () => {
   // const router = useRouter();
@@ -49,11 +49,11 @@ export const Login = () => {
         <div className="flex flex-col justify-center text-center">
           <motion.h1
             className="text-2xl sm:text-3xl font-extrabold text-white"
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
+            transition={{ duration: 1, delay: 0, ease: "easeOut" }}
           >
-            ยังไม่เปิดให้บริการในขณะนี้
+            รับจำนวนจำกัด (20 คน)
           </motion.h1>
 {/* 
           <motion.span 
@@ -71,23 +71,18 @@ export const Login = () => {
             transition={{ duration: 1, delay : 0.75, ease: "easeOut"}}>            
             </motion.p>
 
-          {/* <div className="mt-6 sm:mt-8 flex justify-center">
+          <div className="mt-3 flex justify-center">
               <motion.button
-                onClick={() => router.push('/login')}
-                className="px-6 font-bold sm:px-8 py-2 sm:py-3 bg-yellow-500 text-white rounded-lg shadow-lg hover:bg-yellow-600 transition duration-300 flex items-center"
-                initial={{ opacity: 0, y: 50 }}
+                onClick={() => window.open("https://forms.gle/xcNT6FSHy1h8mN9eA")}
+                className="px-6 text-2xl font-bold sm:px-8 py-2 sm:py-3 bg-yellow-500 text-white rounded-lg shadow-lg hover:bg-yellow-600 transition duration-300 flex items-center"
+                initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, delay : 1, ease: "easeOut"}}
                 whileHover={{ scale: 1 }}
-                whileTap={{ scale: 0.95 }}
+                transition={{ duration: 1, delay : 0.75, ease: "easeOut"}}
               >
-
-                <div className="bg-white p-2 rounded-full mr-2">
-                  <FcGoogle className="text-lg" />
-                </div>
-                เข้าสู่ระบบด้วย Gmail
+                คลิกเพื่อสมัครเลย
               </motion.button>
-            </div> */}
+            </div>
         </div>
       </div>
     </section>

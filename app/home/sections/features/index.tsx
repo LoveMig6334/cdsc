@@ -2,6 +2,10 @@
 import { motion } from 'framer-motion';
 import { FaTrophy, FaMusic, FaUserGraduate } from 'react-icons/fa';
 import { MdMeetingRoom } from "react-icons/md";
+import { LuBrain } from "react-icons/lu";
+import { PiFigmaLogoBold } from "react-icons/pi";
+import { FaLaptopCode } from "react-icons/fa6";
+import { RiJavascriptFill } from "react-icons/ri";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -60,33 +64,33 @@ export const Features = () => {
     const features = [
         {
           id: 1,
-          title: 'รายงานผลการแข่งขัน',
-          description: 'ดูผลการแข่งขันกิจกรรมต่างๆ ภายในโรงเรียนได้อย่างรวดเร็ว',
-          icon: <FaTrophy className="text-yellow-500 text-4xl mb-4" />,
+          title: 'Design Thinking',
+          description: 'สอนการคิดเชิงออกแบบ เพื่อนำไปใช้ในการพัฒนาโปรเจคของตัวเอง',
+          icon: <LuBrain className="text-yellow-500 text-5xl mb-2" />,
           color: 'bg-yellow-50 border-yellow-200',
           brightColor: 'from-yellow-300 to-yellow-100'
         },
         {
           id: 2,
-          title: 'จองห้องดนตรี',
-          description: 'จองห้องดนตรีผ่านระบบออนไลน์',
-          icon: <FaMusic className="text-blue-500 text-4xl mb-4" />,
+          title: 'Figma เบื้องต้น',
+          description: 'สอนการใช้เครื่องมือ Figma เบื้องต้นในการออกแบบเว็บไซต์',
+          icon: <PiFigmaLogoBold className="text-blue-500 text-5xl mb-2" />,
           color: 'bg-blue-50 border-blue-200',
           brightColor: 'from-blue-300 to-blue-100'
         },
         {
           id: 3,
-          title: 'จองห้องประชุม',
-          description: 'จองห้องประชุมห้องสมุด สำหรับการประชุมต่างๆ',
-          icon: <MdMeetingRoom className="text-yellow-500 text-4xl mb-4" />,
+          title: 'HTML & CSS',
+          description: 'สอนการเชียน HTML และ CSS เบื้องต้นเพื่อใช้ในการสร้างโปรเจค',
+          icon: <FaLaptopCode className="text-yellow-500 text-5xl mb-2" />,
           color: 'bg-yellow-50 border-yellow-200',
           brightColor: 'from-yellow-300 to-yellow-100'
         },
         {
           id: 4,
-          title: 'พอร์ตพี่มีให้ดู',
-          description: 'แสดง Portfolio และคำแนะนำของรุ่นพี่ปีก่อนๆ ให้ดูเป็นแนวทาง',
-          icon: <FaUserGraduate className="text-blue-500 text-4xl mb-4" />,
+          title: 'Javascripts',
+          description: 'อนการเชียน Javascript เบื้องต้นและการสร้าง DOM',
+          icon: <RiJavascriptFill className="text-blue-500 text-5xl mb-2" />,
           color: 'bg-blue-50 border-blue-200',
           brightColor: 'from-blue-300 to-blue-100'
         }
@@ -104,7 +108,7 @@ export const Features = () => {
               transition={{ duration: 0.8 }}
             >
               <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 relative inline-block">
-                ฟีเจอร์
+                ค่ายเราสอนอะไรบ้าง?
                 <motion.span 
                   className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-yellow-400 to-blue-400 w-full"
                   initial={{ width: 0 }}
@@ -113,7 +117,7 @@ export const Features = () => {
                   transition={{ delay: 0.5, duration: 0.8 }}
                 />
               </h2>
-              <p className="mt-4 text-base sm:text-lg text-gray-600">ฟีเจอร์ต่างๆ ของ CD Smart Campus ที่จะช่วยเพิ่มความสะดวกสบายของน้องๆ</p>
+              <p className="mt-4 text-base sm:text-lg text-gray-600">ความรู้อัดแน่นตลอด 4 วัน</p>
             </motion.div>
 
             <motion.div 
@@ -155,15 +159,6 @@ export const Features = () => {
                   
                   <h3 className="text-xl font-bold text-gray-900 my-3">{feature.title}</h3>
                   <p className="text-gray-600">{feature.description}</p>
-                  
-                  {/* Button that appears on hover */}
-                  {/* <motion.button 
-                    className="mt-4 px-4 py-2 bg-white text-gray-800 rounded-full border border-gray-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    initial={{ y: 20 }}
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    ดูเพิ่มเติม
-                  </motion.button> */}
                 </motion.div>
               ))}
             </motion.div>

@@ -22,56 +22,53 @@ export const Hero: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
                 >
-                <div className="mb-8 flex justify-center">
-                    <div className="relative h-20 w-20 sm:h-24 sm:w-24 md:h-28 md:w-28">
-                    {/* Static Glow Effect */}
-                    <motion.div
-                        animate={{ 
-                        scale: [1, 1.2, 1],
-                        opacity: [0.5, 0.8, 0.5]
-                        }}
-                        transition={{ 
-                        duration: 3,
-                        repeat: Infinity,
-                        repeatType: "reverse"
-                        }}
-                        className="absolute inset-0"
-                    >
-                        <div className="bg-gradient-to-br from-blue-500 to-yellow-400 h-full w-full rounded-full opacity-30 blur-xl"></div>
-                    </motion.div>
-                    
-                    <div className="absolute inset-0 flex items-center justify-center">
-                        <svg width="80" height="80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="#3B82F6" />
-                        <path d="M2 17L12 22L22 17" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                        <path d="M2 12L12 17L22 12" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                    </div>
-                    </div>
-                </div>
                 
                 {/* Title */}
                 <motion.h1 
-                    className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-8"
+                    className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 1 }}
                 >
                     <motion.span 
-                    className="block bg-gradient-to-r from-blue-600 via-indigo-500 to-blue-800 bg-clip-text text-transparent"
+                    className="block bg-gradient-to-r text-6xl from-blue-600 via-indigo-500 to-blue-800 bg-clip-text text-transparent"
                     initial={{ y: 20 }}
                     animate={{ y: 0 }}
                     transition={{ delay: 0.7, duration: 1.5 }}
                     >
-                    CD Smart Campus
+                    NEXT GEN
                     </motion.span>
+                </motion.h1>
+
+                <motion.h1 
+                    className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 1, duration: 1 }}
+                >
                     <motion.span 
-                    className="block text-xl sm:text-2xl md:text-3xl lg:text-4xl mt-4 text-gray-800"
+                    className="block text-9xl bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent"
                     initial={{ y: 20 }}
                     animate={{ y: 0 }}
-                    transition={{ delay: 0.9, duration: 1.5 }}
+                    transition={{ delay: 0.9, duration: 1.6 }}
                     >
-                    แพลตฟอร์มระบบบริการนักเรียนออนไลน์
+                    WEB
+                    </motion.span>
+                </motion.h1>
+
+                <motion.h1 
+                    className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-8"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 2.4, duration: 1 }}
+                >
+                    <motion.span 
+                    className="block text-6xl bg-gradient-to-r from-gray-400 to-gray-600 bg-clip-text text-transparent"
+                    initial={{ y: 0 }}
+                    animate={{ y: 0 }}
+                    transition={{ delay: 1.2, duration: 1.6 }}
+                    >
+                    ACADEMY
                     </motion.span>
                 </motion.h1>
                 
@@ -82,7 +79,7 @@ export const Hero: React.FC = () => {
                     animate={{ opacity: 1 }}
                     transition={{ delay: 1.1, duration: 0.8 }}
                 >
-                    ระบบออนไลน์ที่ช่วยให้นักเรียนสามารถเข้าถึงบริการต่างๆ ภายในโรงเรียนได้อย่างสะดวกและมีประสิทธิภาพ
+                
                 </motion.p>
                 
                 </motion.div>
