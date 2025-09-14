@@ -60,7 +60,7 @@ export const Hero: React.FC = () => {
                     className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-8"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ delay: 2.4, duration: 1 }}
+                    transition={{ delay: 2, duration: 1 }}
                 >
                     <motion.span 
                     className="block text-6xl bg-gradient-to-r from-gray-400 to-gray-600 bg-clip-text text-transparent"
