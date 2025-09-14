@@ -81,7 +81,7 @@ export const Features = () => {
         {
           id: 3,
           title: 'HTML & CSS',
-          description: 'สอนการเชียน HTML และ CSS เบื้องต้นเพื่อใช้ในการสร้างโปรเจค',
+          description: 'สอนการเขียน HTML และ CSS เบื้องต้นเพื่อใช้ในการสร้างโปรเจค',
           icon: <FaLaptopCode className="text-yellow-500 text-5xl mb-2" />,
           color: 'bg-yellow-50 border-yellow-200',
           brightColor: 'from-yellow-300 to-yellow-100'
@@ -89,7 +89,7 @@ export const Features = () => {
         {
           id: 4,
           title: 'Javascripts',
-          description: 'อนการเชียน Javascript เบื้องต้นและการสร้าง DOM',
+          description: 'สอนการเขียน Javascript เบื้องต้นและการสร้าง DOM',
           icon: <RiJavascriptFill className="text-blue-500 text-5xl mb-2" />,
           color: 'bg-blue-50 border-blue-200',
           brightColor: 'from-blue-300 to-blue-100'
