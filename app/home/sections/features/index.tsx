@@ -1,11 +1,9 @@
 "use client";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { FaTrophy, FaMusic, FaUserGraduate } from "react-icons/fa";
-import { MdMeetingRoom } from "react-icons/md";
+import { FaLaptopCode } from "react-icons/fa";
 import { LuBrain } from "react-icons/lu";
 import { PiFigmaLogo } from "react-icons/pi";
-import { FaLaptopCode } from "react-icons/fa";
 import { RiJavascriptFill } from "react-icons/ri";
 
 const containerVariants = {
@@ -116,7 +114,7 @@ export const Features = () => {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-yellow-50 rounded-full opacity-20 blur-xl" />
           <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-24 h-24 bg-blue-50 rounded-full opacity-20 blur-lg" />
           <div className="absolute bottom-1/4 left-1/2 -translate-x-1/2 w-24 h-24 bg-yellow-50 rounded-full opacity-20 blur-lg" />
-          
+
           <motion.div
             className="text-center mb-12 sm:mb-16 relative z-10"
             initial={{ opacity: 0, y: -20 }}
@@ -162,15 +160,39 @@ export const Features = () => {
                       transition: { duration: 0.5 },
                     }}
                   >
-                    <motion.div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-30" variants={shineVariants} initial="initial" animate="animate" />
-                    <div className={`absolute inset-0 bg-gradient-to-br ${features[0].brightColor} opacity-0 group-hover:opacity-20 transition-opacity duration-500`} />
-                    <motion.div variants={iconVariants} whileHover="hover">{features[0].icon}</motion.div>
-                    <h3 className="text-xl font-bold text-gray-900 my-3">{features[0].title}</h3>
-                    <p className="text-gray-600 mb-3">{features[0].description}</p>
+                    <motion.div
+                      className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-30"
+                      variants={shineVariants}
+                      initial="initial"
+                      animate="animate"
+                    />
+                    <div
+                      className={`absolute inset-0 bg-gradient-to-br ${features[0].brightColor} opacity-0 group-hover:opacity-20 transition-opacity duration-500`}
+                    />
+                    <motion.div variants={iconVariants} whileHover="hover">
+                      {features[0].icon}
+                    </motion.div>
+                    <h3 className="text-xl font-bold text-gray-900 my-3">
+                      {features[0].title}
+                    </h3>
+                    <p className="text-gray-600 mb-3">
+                      {features[0].description}
+                    </p>
                     <div className="mt-auto inline-flex items-center font-medium text-sm text-gray-700 group-hover:text-gray-900">
                       <span>ดูรายละเอียด</span>
-                      <svg className="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      <svg
+                        className="w-3 h-3 ml-1"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 5l7 7-7 7"
+                        />
                       </svg>
                     </div>
                   </motion.div>
@@ -190,30 +212,44 @@ export const Features = () => {
                       transition: { duration: 0.5 },
                     }}
                   >
-                    <motion.div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-30" variants={shineVariants} initial="initial" animate="animate" />
-                    <div className={`absolute inset-0 bg-gradient-to-br ${features[1].brightColor} opacity-0 group-hover:opacity-20 transition-opacity duration-500`} />
-                    <motion.div variants={iconVariants} whileHover="hover">{features[1].icon}</motion.div>
-                    <h3 className="text-xl font-bold text-gray-900 my-3">{features[1].title}</h3>
-                    <p className="text-gray-600 mb-3">{features[1].description}</p>
+                    <motion.div
+                      className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-30"
+                      variants={shineVariants}
+                      initial="initial"
+                      animate="animate"
+                    />
+                    <div
+                      className={`absolute inset-0 bg-gradient-to-br ${features[1].brightColor} opacity-0 group-hover:opacity-20 transition-opacity duration-500`}
+                    />
+                    <motion.div variants={iconVariants} whileHover="hover">
+                      {features[1].icon}
+                    </motion.div>
+                    <h3 className="text-xl font-bold text-gray-900 my-3">
+                      {features[1].title}
+                    </h3>
+                    <p className="text-gray-600 mb-3">
+                      {features[1].description}
+                    </p>
                     <div className="mt-auto inline-flex items-center font-medium text-sm text-gray-700 group-hover:text-gray-900">
                       <span>ดูรายละเอียด</span>
-                      <svg className="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      <svg
+                        className="w-3 h-3 ml-1"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 5l7 7-7 7"
+                        />
                       </svg>
                     </div>
                   </motion.div>
                 </Link>
               </div>
-            </div>
-
-            {/* Center diamond node with perfect symmetry */}
-            <div className="flex justify-center items-center py-6 mb-6 relative">
-              <div className="w-1/3 h-px bg-gradient-to-r from-transparent to-gray-200"></div>
-              <div className="w-14 h-14 bg-white rounded-md rotate-45 border border-gray-100 shadow-md transform -translate-y-1/2 absolute"></div>
-              <div className="w-12 h-12 bg-gradient-to-br from-yellow-50 to-blue-50 rounded-md rotate-45 transform -translate-y-1/2 absolute">
-                <div className="w-6 h-6 bg-gradient-to-br from-yellow-200 to-blue-200 rounded-sm absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
-              </div>
-              <div className="w-1/3 h-px bg-gradient-to-r from-gray-200 to-transparent"></div>
             </div>
 
             {/* Bottom row - 2 cards */}
@@ -231,15 +267,39 @@ export const Features = () => {
                       transition: { duration: 0.5 },
                     }}
                   >
-                    <motion.div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-30" variants={shineVariants} initial="initial" animate="animate" />
-                    <div className={`absolute inset-0 bg-gradient-to-br ${features[2].brightColor} opacity-0 group-hover:opacity-20 transition-opacity duration-500`} />
-                    <motion.div variants={iconVariants} whileHover="hover">{features[2].icon}</motion.div>
-                    <h3 className="text-xl font-bold text-gray-900 my-3">{features[2].title}</h3>
-                    <p className="text-gray-600 mb-3">{features[2].description}</p>
+                    <motion.div
+                      className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-30"
+                      variants={shineVariants}
+                      initial="initial"
+                      animate="animate"
+                    />
+                    <div
+                      className={`absolute inset-0 bg-gradient-to-br ${features[2].brightColor} opacity-0 group-hover:opacity-20 transition-opacity duration-500`}
+                    />
+                    <motion.div variants={iconVariants} whileHover="hover">
+                      {features[2].icon}
+                    </motion.div>
+                    <h3 className="text-xl font-bold text-gray-900 my-3">
+                      {features[2].title}
+                    </h3>
+                    <p className="text-gray-600 mb-3">
+                      {features[2].description}
+                    </p>
                     <div className="mt-auto inline-flex items-center font-medium text-sm text-gray-700 group-hover:text-gray-900">
                       <span>ดูรายละเอียด</span>
-                      <svg className="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      <svg
+                        className="w-3 h-3 ml-1"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 5l7 7-7 7"
+                        />
                       </svg>
                     </div>
                   </motion.div>
@@ -259,41 +319,44 @@ export const Features = () => {
                       transition: { duration: 0.5 },
                     }}
                   >
-                    <motion.div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-30" variants={shineVariants} initial="initial" animate="animate" />
-                    <div className={`absolute inset-0 bg-gradient-to-br ${features[3].brightColor} opacity-0 group-hover:opacity-20 transition-opacity duration-500`} />
-                    <motion.div variants={iconVariants} whileHover="hover">{features[3].icon}</motion.div>
-                    <h3 className="text-xl font-bold text-gray-900 my-3">{features[3].title}</h3>
-                    <p className="text-gray-600 mb-3">{features[3].description}</p>
+                    <motion.div
+                      className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-30"
+                      variants={shineVariants}
+                      initial="initial"
+                      animate="animate"
+                    />
+                    <div
+                      className={`absolute inset-0 bg-gradient-to-br ${features[3].brightColor} opacity-0 group-hover:opacity-20 transition-opacity duration-500`}
+                    />
+                    <motion.div variants={iconVariants} whileHover="hover">
+                      {features[3].icon}
+                    </motion.div>
+                    <h3 className="text-xl font-bold text-gray-900 my-3">
+                      {features[3].title}
+                    </h3>
+                    <p className="text-gray-600 mb-3">
+                      {features[3].description}
+                    </p>
                     <div className="mt-auto inline-flex items-center font-medium text-sm text-gray-700 group-hover:text-gray-900">
                       <span>ดูรายละเอียด</span>
-                      <svg className="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      <svg
+                        className="w-3 h-3 ml-1"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 5l7 7-7 7"
+                        />
                       </svg>
                     </div>
                   </motion.div>
                 </Link>
               </div>
-            </div>
-
-            {/* Symmetrical connecting decorative lines */}
-            <div className="hidden md:block">
-              {/* Top connections */}
-              <svg className="absolute top-[22%] left-1/2 transform -translate-x-1/2 w-32 opacity-30" height="30" viewBox="0 0 100 30">
-                <path d="M0,15 H100" stroke="#94a3b8" strokeWidth="2" fill="none" strokeDasharray="5,5" />
-              </svg>
-              
-              {/* Vertical connections */}
-              <svg className="absolute top-[22%] left-1/4 transform -translate-x-1/2 h-56 opacity-30" width="10" viewBox="0 0 10 100">
-                <path d="M5,0 V100" stroke="#94a3b8" strokeWidth="2" fill="none" strokeDasharray="5,5" />
-              </svg>
-              <svg className="absolute top-[22%] left-3/4 transform -translate-x-1/2 h-56 opacity-30" width="10" viewBox="0 0 10 100">
-                <path d="M5,0 V100" stroke="#94a3b8" strokeWidth="2" fill="none" strokeDasharray="5,5" />
-              </svg>
-              
-              {/* Bottom connections */}
-              <svg className="absolute bottom-[22%] left-1/2 transform -translate-x-1/2 w-32 opacity-30" height="30" viewBox="0 0 100 30">
-                <path d="M0,15 H100" stroke="#94a3b8" strokeWidth="2" fill="none" strokeDasharray="5,5" />
-              </svg>
             </div>
           </motion.div>
         </div>
