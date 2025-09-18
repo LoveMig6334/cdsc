@@ -1,12 +1,10 @@
 "use client";
-import { useEffect, useState } from 'react';
-import Head from 'next/head';
-import { motion } from 'framer-motion';
-import { FaSignInAlt, FaBars } from 'react-icons/fa';
-import { Hero } from './sections/hero';
-import { Features } from './sections/features';
-import { Login } from './sections/login';
-import Footer from '@/app/components/UI/Footer';
+import Footer from "@/app/components/UI/Footer";
+import Head from "next/head";
+import { useEffect, useState } from "react";
+import { Features } from "./sections/features";
+import { Hero } from "./sections/hero";
+import { Login } from "./sections/login";
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -15,42 +13,43 @@ export default function Home() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      const heroSection = document.getElementById('hero-bg');
+      const heroSection = document.getElementById("hero-bg");
       if (heroSection) {
         heroSection.style.backgroundPositionY = `${scrollY * 0.5}px`;
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
   // Close mobile menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      const mobileMenu = document.getElementById('mobile-menu');
-      const mobileMenuButton = document.getElementById('mobile-menu-button');
-      
-      if (mobileMenu && 
-          mobileMenuButton && 
-          !mobileMenu.contains(event.target as Node) && 
-          !mobileMenuButton.contains(event.target as Node)) {
+      const mobileMenu = document.getElementById("mobile-menu");
+      const mobileMenuButton = document.getElementById("mobile-menu-button");
+
+      if (
+        mobileMenu &&
+        mobileMenuButton &&
+        !mobileMenu.contains(event.target as Node) &&
+        !mobileMenuButton.contains(event.target as Node)
+      ) {
         setMobileMenuOpen(false);
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
 
   const handleLogin = () => {
-    console.log('Logging in with OAuth');
+    console.log("Logging in with OAuth");
   };
-
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -60,16 +59,13 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
 
-
       {/* Main Content */}
-      <Hero />  
-      <Features />    
+      <Hero />
+      <Features />
       <Login />
-      
 
       {/* Footer */}
       <Footer />
-
     </div>
   );
 }
