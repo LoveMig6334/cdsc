@@ -150,142 +150,134 @@ export const Features = () => {
             <div className="flex flex-col md:flex-row justify-center items-center gap-6 md:gap-16 mb-8 md:mb-12">
               {/* Design Thinking card */}
               <div className="w-full md:w-2/5 max-w-sm">
-                <motion.div
-                  className={`${features[0].color} border-2 p-4 sm:p-6 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden group cursor-pointer h-full`}
-                  variants={itemVariants}
-                  whileHover={{
-                    y: -10,
-                    boxShadow: "0 15px 30px rgba(0,0,0,0.1)",
-                    scale: 1.03,
-                    transition: { duration: 0.5 },
-                  }}
-                  whileTap={{
-                    scale: 0.95,
-                    opacity: 0.8,
-                    boxShadow: "0 5px 10px rgba(0,0,0,0.2)",
-                    transition: { duration: 0.1 },
-                  }}
-                >
-                  <Link
-                    href={features[0].link}
-                    className="block no-underline absolute inset-0 z-0"
-                  >
-                    <span className="sr-only">View {features[0].title}</span>
-                  </Link>
+                <Link href={features[0].link} passHref>
                   <motion.div
-                    className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-30"
-                    variants={shineVariants}
-                    initial="initial"
-                    animate="animate"
-                  />
-                  <div
-                    className={`absolute inset-0 bg-gradient-to-br ${features[0].brightColor} opacity-0 group-hover:opacity-20 transition-opacity duration-500`}
-                  />
-                  <RippleEffect
-                    color="rgba(255, 255, 255, 0.5)"
-                    onClick={() => (window.location.href = features[0].link)}
-                  />
-                  <motion.div
-                    variants={iconVariants}
-                    whileHover="hover"
-                    className="z-10"
+                    className={`${features[0].color} border-2 p-4 sm:p-6 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden group cursor-pointer h-full`}
+                    variants={itemVariants}
+                    whileHover={{
+                      y: -10,
+                      boxShadow: "0 15px 30px rgba(0,0,0,0.1)",
+                      scale: 1.03,
+                      transition: { duration: 0.5 },
+                    }}
+                    whileTap={{
+                      scale: 0.95,
+                      opacity: 0.8,
+                      boxShadow: "0 5px 10px rgba(0,0,0,0.2)",
+                      transition: { duration: 0.1 },
+                    }}
+                    onClick={() => window.location.href = features[0].link}
                   >
-                    {features[0].icon}
-                  </motion.div>
-                  <h3 className="text-xl font-bold text-gray-900 my-3 relative z-10">
-                    {features[0].title}
-                  </h3>
-                  <p className="text-gray-600 mb-3 relative z-10">
-                    {features[0].description}
-                  </p>
-                  <div className="mt-auto inline-flex items-center font-medium text-sm text-gray-700 group-hover:text-gray-900 relative z-10">
-                    <span>ดูรายละเอียด</span>
-                    <svg
-                      className="w-3 h-3 ml-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
+                    <motion.div
+                      className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-30"
+                      variants={shineVariants}
+                      initial="initial"
+                      animate="animate"
+                    />
+                    <div
+                      className={`absolute inset-0 bg-gradient-to-br ${features[0].brightColor} opacity-0 group-hover:opacity-20 transition-opacity duration-500`}
+                    />
+                    <RippleEffect
+                      color="rgba(255, 255, 255, 0.5)"
+                    />
+                    <motion.div
+                      variants={iconVariants}
+                      whileHover="hover"
+                      className="pointer-events-none"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
-                  </div>
-                </motion.div>
+                      {features[0].icon}
+                    </motion.div>
+                    <h3 className="text-xl font-bold text-gray-900 my-3 relative pointer-events-none">
+                      {features[0].title}
+                    </h3>
+                    <p className="text-gray-600 mb-3 relative pointer-events-none">
+                      {features[0].description}
+                    </p>
+                    <div className="mt-auto inline-flex items-center font-medium text-sm text-gray-700 group-hover:text-gray-900 relative pointer-events-none">
+                      <span>ดูรายละเอียด</span>
+                      <svg
+                        className="w-3 h-3 ml-1"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 5l7 7-7 7"
+                        />
+                      </svg>
+                    </div>
+                  </motion.div>
+                </Link>
               </div>
 
               {/* Figma card */}
               <div className="w-full md:w-2/5 max-w-sm">
-                <motion.div
-                  className={`${features[1].color} border-2 p-4 sm:p-6 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden group cursor-pointer h-full`}
-                  variants={itemVariants}
-                  whileHover={{
-                    y: -10,
-                    boxShadow: "0 15px 30px rgba(0,0,0,0.1)",
-                    scale: 1.03,
-                    transition: { duration: 0.5 },
-                  }}
-                  whileTap={{
-                    scale: 0.95,
-                    opacity: 0.8,
-                    boxShadow: "0 5px 10px rgba(0,0,0,0.2)",
-                    transition: { duration: 0.1 },
-                  }}
-                >
-                  <Link
-                    href={features[1].link}
-                    className="block no-underline absolute inset-0 z-0"
-                  >
-                    <span className="sr-only">View {features[1].title}</span>
-                  </Link>
+                <Link href={features[1].link} passHref>
                   <motion.div
-                    className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-30"
-                    variants={shineVariants}
-                    initial="initial"
-                    animate="animate"
-                  />
-                  <div
-                    className={`absolute inset-0 bg-gradient-to-br ${features[1].brightColor} opacity-0 group-hover:opacity-20 transition-opacity duration-500`}
-                  />
-                  <RippleEffect
-                    color="rgba(255, 255, 255, 0.5)"
-                    onClick={() => (window.location.href = features[1].link)}
-                  />
-                  <motion.div
-                    variants={iconVariants}
-                    whileHover="hover"
-                    className="z-10"
+                    className={`${features[1].color} border-2 p-4 sm:p-6 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden group cursor-pointer h-full`}
+                    variants={itemVariants}
+                    whileHover={{
+                      y: -10,
+                      boxShadow: "0 15px 30px rgba(0,0,0,0.1)",
+                      scale: 1.03,
+                      transition: { duration: 0.5 },
+                    }}
+                    whileTap={{
+                      scale: 0.95,
+                      opacity: 0.8,
+                      boxShadow: "0 5px 10px rgba(0,0,0,0.2)",
+                      transition: { duration: 0.1 },
+                    }}
+                    onClick={() => window.location.href = features[1].link}
                   >
-                    {features[1].icon}
-                  </motion.div>
-                  <h3 className="text-xl font-bold text-gray-900 my-3 relative z-10">
-                    {features[1].title}
-                  </h3>
-                  <p className="text-gray-600 mb-3 relative z-10">
-                    {features[1].description}
-                  </p>
-                  <div className="mt-auto inline-flex items-center font-medium text-sm text-gray-700 group-hover:text-gray-900 relative z-10">
-                    <span>ดูรายละเอียด</span>
-                    <svg
-                      className="w-3 h-3 ml-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
+                    <motion.div
+                      className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-30"
+                      variants={shineVariants}
+                      initial="initial"
+                      animate="animate"
+                    />
+                    <div
+                      className={`absolute inset-0 bg-gradient-to-br ${features[1].brightColor} opacity-0 group-hover:opacity-20 transition-opacity duration-500`}
+                    />
+                    <RippleEffect
+                      color="rgba(255, 255, 255, 0.5)"
+                    />
+                    <motion.div
+                      variants={iconVariants}
+                      whileHover="hover"
+                      className="pointer-events-none"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
-                  </div>
-                </motion.div>
+                      {features[1].icon}
+                    </motion.div>
+                    <h3 className="text-xl font-bold text-gray-900 my-3 relative pointer-events-none">
+                      {features[1].title}
+                    </h3>
+                    <p className="text-gray-600 mb-3 relative pointer-events-none">
+                      {features[1].description}
+                    </p>
+                    <div className="mt-auto inline-flex items-center font-medium text-sm text-gray-700 group-hover:text-gray-900 relative pointer-events-none">
+                      <span>ดูรายละเอียด</span>
+                      <svg
+                        className="w-3 h-3 ml-1"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 5l7 7-7 7"
+                        />
+                      </svg>
+                    </div>
+                  </motion.div>
+                </Link>
               </div>
             </div>
 
@@ -293,142 +285,134 @@ export const Features = () => {
             <div className="flex flex-col md:flex-row justify-center items-center gap-6 md:gap-16">
               {/* HTML & CSS card */}
               <div className="w-full md:w-2/5 max-w-sm">
-                <motion.div
-                  className={`${features[2].color} border-2 p-4 sm:p-6 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden group cursor-pointer h-full`}
-                  variants={itemVariants}
-                  whileHover={{
-                    y: -10,
-                    boxShadow: "0 15px 30px rgba(0,0,0,0.1)",
-                    scale: 1.03,
-                    transition: { duration: 0.5 },
-                  }}
-                  whileTap={{
-                    scale: 0.95,
-                    opacity: 0.8,
-                    boxShadow: "0 5px 10px rgba(0,0,0,0.2)",
-                    transition: { duration: 0.1 },
-                  }}
-                >
-                  <Link
-                    href={features[2].link}
-                    className="block no-underline absolute inset-0 z-0"
-                  >
-                    <span className="sr-only">View {features[2].title}</span>
-                  </Link>
+                <Link href={features[2].link} passHref>
                   <motion.div
-                    className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-30"
-                    variants={shineVariants}
-                    initial="initial"
-                    animate="animate"
-                  />
-                  <div
-                    className={`absolute inset-0 bg-gradient-to-br ${features[2].brightColor} opacity-0 group-hover:opacity-20 transition-opacity duration-500`}
-                  />
-                  <RippleEffect
-                    color="rgba(255, 255, 255, 0.5)"
-                    onClick={() => (window.location.href = features[2].link)}
-                  />
-                  <motion.div
-                    variants={iconVariants}
-                    whileHover="hover"
-                    className="z-10"
+                    className={`${features[2].color} border-2 p-4 sm:p-6 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden group cursor-pointer h-full`}
+                    variants={itemVariants}
+                    whileHover={{
+                      y: -10,
+                      boxShadow: "0 15px 30px rgba(0,0,0,0.1)",
+                      scale: 1.03,
+                      transition: { duration: 0.5 },
+                    }}
+                    whileTap={{
+                      scale: 0.95,
+                      opacity: 0.8,
+                      boxShadow: "0 5px 10px rgba(0,0,0,0.2)",
+                      transition: { duration: 0.1 },
+                    }}
+                    onClick={() => window.location.href = features[2].link}
                   >
-                    {features[2].icon}
-                  </motion.div>
-                  <h3 className="text-xl font-bold text-gray-900 my-3 relative z-10">
-                    {features[2].title}
-                  </h3>
-                  <p className="text-gray-600 mb-3 relative z-10">
-                    {features[2].description}
-                  </p>
-                  <div className="mt-auto inline-flex items-center font-medium text-sm text-gray-700 group-hover:text-gray-900 relative z-10">
-                    <span>ดูรายละเอียด</span>
-                    <svg
-                      className="w-3 h-3 ml-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
+                    <motion.div
+                      className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-30"
+                      variants={shineVariants}
+                      initial="initial"
+                      animate="animate"
+                    />
+                    <div
+                      className={`absolute inset-0 bg-gradient-to-br ${features[2].brightColor} opacity-0 group-hover:opacity-20 transition-opacity duration-500`}
+                    />
+                    <RippleEffect
+                      color="rgba(255, 255, 255, 0.5)"
+                    />
+                    <motion.div
+                      variants={iconVariants}
+                      whileHover="hover"
+                      className="pointer-events-none"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
-                  </div>
-                </motion.div>
+                      {features[2].icon}
+                    </motion.div>
+                    <h3 className="text-xl font-bold text-gray-900 my-3 relative pointer-events-none">
+                      {features[2].title}
+                    </h3>
+                    <p className="text-gray-600 mb-3 relative pointer-events-none">
+                      {features[2].description}
+                    </p>
+                    <div className="mt-auto inline-flex items-center font-medium text-sm text-gray-700 group-hover:text-gray-900 relative pointer-events-none">
+                      <span>ดูรายละเอียด</span>
+                      <svg
+                        className="w-3 h-3 ml-1"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 5l7 7-7 7"
+                        />
+                      </svg>
+                    </div>
+                  </motion.div>
+                </Link>
               </div>
 
               {/* JavaScript card */}
               <div className="w-full md:w-2/5 max-w-sm">
-                <motion.div
-                  className={`${features[3].color} border-2 p-4 sm:p-6 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden group cursor-pointer h-full`}
-                  variants={itemVariants}
-                  whileHover={{
-                    y: -10,
-                    boxShadow: "0 15px 30px rgba(0,0,0,0.1)",
-                    scale: 1.03,
-                    transition: { duration: 0.5 },
-                  }}
-                  whileTap={{
-                    scale: 0.95,
-                    opacity: 0.8,
-                    boxShadow: "0 5px 10px rgba(0,0,0,0.2)",
-                    transition: { duration: 0.1 },
-                  }}
-                >
-                  <Link
-                    href={features[3].link}
-                    className="block no-underline absolute inset-0 z-0"
-                  >
-                    <span className="sr-only">View {features[3].title}</span>
-                  </Link>
+                <Link href={features[3].link} passHref>
                   <motion.div
-                    className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-30"
-                    variants={shineVariants}
-                    initial="initial"
-                    animate="animate"
-                  />
-                  <div
-                    className={`absolute inset-0 bg-gradient-to-br ${features[3].brightColor} opacity-0 group-hover:opacity-20 transition-opacity duration-500`}
-                  />
-                  <RippleEffect
-                    color="rgba(255, 255, 255, 0.5)"
-                    onClick={() => (window.location.href = features[3].link)}
-                  />
-                  <motion.div
-                    variants={iconVariants}
-                    whileHover="hover"
-                    className="z-10"
+                    className={`${features[3].color} border-2 p-4 sm:p-6 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden group cursor-pointer h-full`}
+                    variants={itemVariants}
+                    whileHover={{
+                      y: -10,
+                      boxShadow: "0 15px 30px rgba(0,0,0,0.1)",
+                      scale: 1.03,
+                      transition: { duration: 0.5 },
+                    }}
+                    whileTap={{
+                      scale: 0.95,
+                      opacity: 0.8,
+                      boxShadow: "0 5px 10px rgba(0,0,0,0.2)",
+                      transition: { duration: 0.1 },
+                    }}
+                    onClick={() => window.location.href = features[3].link}
                   >
-                    {features[3].icon}
-                  </motion.div>
-                  <h3 className="text-xl font-bold text-gray-900 my-3 relative z-10">
-                    {features[3].title}
-                  </h3>
-                  <p className="text-gray-600 mb-3 relative z-10">
-                    {features[3].description}
-                  </p>
-                  <div className="mt-auto inline-flex items-center font-medium text-sm text-gray-700 group-hover:text-gray-900 relative z-10">
-                    <span>ดูรายละเอียด</span>
-                    <svg
-                      className="w-3 h-3 ml-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
+                    <motion.div
+                      className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-30"
+                      variants={shineVariants}
+                      initial="initial"
+                      animate="animate"
+                    />
+                    <div
+                      className={`absolute inset-0 bg-gradient-to-br ${features[3].brightColor} opacity-0 group-hover:opacity-20 transition-opacity duration-500`}
+                    />
+                    <RippleEffect
+                      color="rgba(255, 255, 255, 0.5)"
+                    />
+                    <motion.div
+                      variants={iconVariants}
+                      whileHover="hover"
+                      className="pointer-events-none"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
-                  </div>
-                </motion.div>
+                      {features[3].icon}
+                    </motion.div>
+                    <h3 className="text-xl font-bold text-gray-900 my-3 relative pointer-events-none">
+                      {features[3].title}
+                    </h3>
+                    <p className="text-gray-600 mb-3 relative pointer-events-none">
+                      {features[3].description}
+                    </p>
+                    <div className="mt-auto inline-flex items-center font-medium text-sm text-gray-700 group-hover:text-gray-900 relative pointer-events-none">
+                      <span>ดูรายละเอียด</span>
+                      <svg
+                        className="w-3 h-3 ml-1"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 5l7 7-7 7"
+                        />
+                      </svg>
+                    </div>
+                  </motion.div>
+                </Link>
               </div>
             </div>
           </motion.div>

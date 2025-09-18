@@ -53,9 +53,9 @@ export const RippleEffect: React.FC<RippleProps> = ({
 
   return (
     <div
-      className="absolute inset-0 overflow-hidden"
+      className="absolute inset-0 overflow-hidden z-50"
       onClick={addRipple}
-      style={{ pointerEvents: "auto" }}
+      style={{ pointerEvents: "none" }} // Change to "none" so clicks pass through to underlying elements
     >
       <AnimatePresence>
         {rippleArray.map((ripple) => (
