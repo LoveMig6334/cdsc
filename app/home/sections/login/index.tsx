@@ -60,141 +60,106 @@ export const Login = () => {
         </svg>
       </div>
 
-      {/* Tech Icon Symmetrical Pattern - Top Layer */}
+      {/* Tech Icon Random Pattern - Like in the image */}
       <div className="absolute inset-0 opacity-30">
-        {" "}
-        {/* Increased opacity for more visibility */}
-        <div className="herringbone-web-container">
-          {Array.from({ length: 6 }).map((_, rowIndex) => (
-            <div
-              key={`top-${rowIndex}`}
-              className="herringbone-web-row"
-              style={{
-                transform: `translateY(${rowIndex * 160}px)`, // Even more increased vertical spacing
-                display: "flex",
-                justifyContent: "center",
-              }}
-            >
-              {Array.from({ length: 6 }).map((_, colIndex) => {
-                // Add randomness to each icon's position
-                // Use a seeded random based on indices for consistent randomness
-                const randomOffsetX =
-                  ((rowIndex * 13 + colIndex * 7) % 10) * 15 - 75;
-                const randomOffsetY =
-                  ((rowIndex * 7 + colIndex * 13) % 10) * 15 - 75;
+        <div className="random-icons-container">
+          {Array.from({ length: 24 }).map((_, index) => {
+            // Generate completely random positions across the entire container
+            const posX = (index * 19) % 100; // random percentage across width
+            const posY = (index * 13 + 7) % 100; // random percentage across height
 
-                // Calculate position relative to center for symmetry
-                const centerRow = 2.5; // Middle of 6 rows
-                const centerCol = 2.5; // Middle of 6 columns
+            // Rotate icons at various angles like in the image
+            const rotation = ((index * 17) % 360) - 180;
 
-                // Add randomness to the distance calculation for less perfect symmetry
-                const distanceFromCenter = Math.sqrt(
-                  Math.pow(rowIndex - centerRow + randomOffsetY * 0.01, 2) +
-                    Math.pow(colIndex - centerCol + randomOffsetX * 0.01, 2)
-                );
+            // Select icon type based on index for a good mix
+            const iconIndex = index % 10;
 
-                // Use distance to determine icon type for radial symmetry
-                const iconIndex = Math.floor(distanceFromCenter) % 10;
+            let Icon;
+            let color;
 
-                let Icon;
-                let color;
+            switch (iconIndex) {
+              case 0:
+                Icon = FaHtml5;
+                color = "text-orange-400";
+                break;
+              case 1:
+                Icon = FaCss3Alt;
+                color = "text-blue-400";
+                break;
+              case 2:
+                Icon = FaJs;
+                color = "text-yellow-300";
+                break;
+              case 3:
+                Icon = SiTailwindcss;
+                color = "text-cyan-300";
+                break;
+              case 4:
+                Icon = FaReact;
+                color = "text-blue-300";
+                break;
+              case 5:
+                Icon = SiFigma;
+                color = "text-purple-300";
+                break;
+              case 6:
+                Icon = SiNextdotjs;
+                color = "text-white";
+                break;
+              case 7:
+                Icon = SiTypescript;
+                color = "text-blue-500";
+                break;
+              case 8:
+                Icon = TbBrandVscode;
+                color = "text-blue-400";
+                break;
+              case 9:
+                Icon = FaDatabase;
+                color = "text-green-300";
+                break;
+              default:
+                Icon = FaCode;
+                color = "text-gray-300";
+            }
 
-                // Calculate angle for radial rotation pattern
-                const angle =
-                  Math.atan2(rowIndex - centerRow, colIndex - centerCol) *
-                  (180 / Math.PI);
+            // Random size based on index (larger variation)
+            const size = 30 + ((index * 11) % 40);
 
-                switch (iconIndex) {
-                  case 0:
-                    Icon = FaHtml5;
-                    color = "text-orange-400";
-                    break;
-                  case 1:
-                    Icon = FaCss3Alt;
-                    color = "text-blue-400";
-                    break;
-                  case 2:
-                    Icon = FaJs;
-                    color = "text-yellow-300";
-                    break;
-                  case 3:
-                    Icon = SiTailwindcss;
-                    color = "text-cyan-300";
-                    break;
-                  case 4:
-                    Icon = FaReact;
-                    color = "text-blue-300";
-                    break;
-                  case 5:
-                    Icon = SiFigma;
-                    color = "text-purple-300";
-                    break;
-                  case 6:
-                    Icon = SiNextdotjs;
-                    color = "text-white";
-                    break;
-                  case 7:
-                    Icon = SiTypescript;
-                    color = "text-blue-500";
-                    break;
-                  case 8:
-                    Icon = TbBrandVscode;
-                    color = "text-blue-400";
-                    break;
-                  case 9:
-                    Icon = FaDatabase;
-                    color = "text-green-300";
-                    break;
-                  default:
-                    Icon = FaCode;
-                    color = "text-gray-300";
-                }
+            // Random opacity variation
+            const opacity = 0.6 + ((index * 7) % 5) / 10;
 
-                // Add randomness to icon size
-                const randomSizeFactor =
-                  ((rowIndex * 11 + colIndex * 17) % 10) * 0.2;
-                const size =
-                  Math.max(35, 60 - distanceFromCenter * 1.5) +
-                  randomSizeFactor * 10;
-
-                // Calculate opacity with slight randomness
-                const randomOpacity =
-                  ((rowIndex * 19 + colIndex * 23) % 10) * 0.02;
-                const opacity =
-                  Math.max(0.4, 0.9 - distanceFromCenter * 0.1) + randomOpacity;
-
-                return (
-                  <motion.div
-                    key={`top-${rowIndex}-${colIndex}`}
-                    className={`herringbone-web-item ${color}`}
-                    style={{
-                      transform: `rotate(${angle}deg) translate(${randomOffsetX}px, ${randomOffsetY}px)`,
-                      opacity: opacity,
-                    }}
-                    animate={{
-                      y: [0, -8 - (iconIndex % 3) * 5, 0], // Random amplitude
-                      x: [0, (rowIndex + colIndex) % 2 ? 8 : -8, 0], // Random horizontal movement
-                      scale: [1, 1.05 + randomSizeFactor * 0.2, 1], // Random scale factor
-                      rotate: [
-                        angle,
-                        angle + (iconIndex % 2 ? 15 : -15),
-                        angle,
-                      ], // More rotation
-                    }}
-                    transition={{
-                      repeat: Infinity,
-                      repeatType: "reverse",
-                      duration: 3 + ((rowIndex * 7 + colIndex * 13) % 5), // Random duration
-                      // Random delay for more natural, less synchronized movement
-                      delay: (rowIndex * 0.3 + colIndex * 0.2) % 2,
-                    }}
-                  >
-                    <Icon size={size} />
-                  </motion.div>
-                );
-              })}
-            </div>
-          ))}
+            return (
+              <motion.div
+                key={`icon-${index}`}
+                className={`random-icon ${color}`}
+                style={{
+                  position: "absolute",
+                  left: `${posX}%`,
+                  top: `${posY}%`,
+                  transform: `rotate(${rotation}deg)`,
+                  opacity: opacity,
+                }}
+                animate={{
+                  y: [0, -10 + (index % 5) * 2, 0],
+                  x: [0, index % 2 ? 8 : -8, 0],
+                  rotate: [
+                    rotation,
+                    rotation + (index % 2 ? 10 : -10),
+                    rotation,
+                  ],
+                }}
+                transition={{
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                  duration: 3 + (index % 4),
+                  delay: (index * 0.2) % 2,
+                }}
+              >
+                <Icon size={size} />
+              </motion.div>
+            );
+          })}
         </div>
       </div>
 
@@ -365,38 +330,25 @@ export const Login = () => {
         </motion.div>
       </div>
 
-      {/* Style for symmetrical icon pattern */}
+      {/* Style for random scattered icon pattern */}
       <style jsx>{`
-        .herringbone-web-container {
+        .random-icons-container {
           position: absolute;
           width: 100%;
           height: 100%;
           overflow: hidden;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
         }
 
-        .herringbone-web-row {
-          display: flex;
-          position: relative;
-          margin-bottom: 40px;
-          width: 100%;
-          justify-content: center;
-        }
-
-        .herringbone-web-item {
-          margin: 0 90px; /* Significantly increased horizontal spacing between icons */
+        .random-icon {
           transform-origin: center;
           transition: all 0.5s ease;
           display: flex;
           align-items: center;
           justify-content: center;
-          position: relative; /* Enable relative positioning for random offsets */
+          filter: drop-shadow(0 0 2px currentColor);
         }
 
-        .herringbone-web-item:hover {
+        .random-icon:hover {
           transform: scale(1.5) rotate(0deg) !important;
           filter: drop-shadow(0 0 8px currentColor);
           z-index: 10;
