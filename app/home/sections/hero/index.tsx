@@ -12,15 +12,22 @@ export const Hero: React.FC = () => {
     }
   };
 
-  // Generate deterministic "random" values based on row and column
+  // Generate symmetrical values based on row and column
   const getOpacity = (row: number, col: number): number => {
-    // Create a deterministic pattern based on row and column
-    return 0.3 + ((row * 7 + col * 13) % 70) / 100;
+    // Create a symmetrical pattern based on row and column
+    // Calculate distance from center to create radial symmetry
+    const centerRow = 7; // Middle of 15 rows
+    const centerCol = 3.5; // Middle of 8 columns
+    const distanceFromCenter = Math.sqrt(Math.pow(row - centerRow, 2) + Math.pow(col - centerCol, 2));
+    return 0.4 + (Math.cos(distanceFromCenter * 0.5) * 0.3);
   };
 
   const getSize = (row: number, col: number): number => {
-    // Create a deterministic pattern for icon size
-    return 30 + ((row * 11 + col * 17) % 20);
+    // Create a symmetrical pattern for icon size
+    const centerRow = 7; 
+    const centerCol = 3.5;
+    const distanceFromCenter = Math.sqrt(Math.pow(row - centerRow, 2) + Math.pow(col - centerCol, 2));
+    return 40 - (distanceFromCenter * 1.2);
   };
 
   return (
@@ -32,17 +39,26 @@ export const Hero: React.FC = () => {
         {/* Web Tech Herringbone Pattern Background */}
         <div className="absolute inset-0 z-0 overflow-hidden opacity-10">
           <div className="herringbone-container">
-            {/* Programmatically generate herringbone pattern with web tech icons */}
+            {/* Programmatically generate symmetrical pattern with web tech icons */}
             {Array.from({ length: 15 }).map((_, rowIndex) => (
               <div
                 key={rowIndex}
                 className="herringbone-row"
                 style={{
                   transform: `translateX(${(rowIndex % 2) * 60}px)`,
+                  display: 'flex',
+                  justifyContent: 'center',
                 }}
               >
                 {Array.from({ length: 8 }).map((_, colIndex) => {
-                  const iconType = (rowIndex + colIndex) % 6;
+                  // Create symmetrical pattern by mirroring the icons
+                  // For a perfect symmetry, we use the position relative to the center
+                  const centerRow = 7;
+                  const centerCol = 3.5;
+                  // Calculate position relative to center (normalized to 0-5)
+                  const distanceFromCenter = Math.sqrt(Math.pow(rowIndex - centerRow, 2) + Math.pow(colIndex - centerCol, 2));
+                  const iconType = Math.floor(distanceFromCenter) % 6;
+                  
                   let Icon;
                   let color;
 
@@ -72,16 +88,19 @@ export const Hero: React.FC = () => {
                       color = "text-purple-400";
                   }
 
-                  // Use deterministic values instead of random
+                  // Use symmetrical values
                   const opacity = getOpacity(rowIndex, colIndex);
                   const size = getSize(rowIndex, colIndex);
+
+                  // Calculate rotation based on position relative to center
+                  const angle = Math.atan2(rowIndex - centerRow, colIndex - centerCol) * (180 / Math.PI);
 
                   return (
                     <div
                       key={colIndex}
                       className={`herringbone-item ${color}`}
                       style={{
-                        transform: `rotate(${(rowIndex % 2) * 45}deg)`,
+                        transform: `rotate(${angle}deg)`,
                         opacity: opacity,
                       }}
                     >
@@ -478,42 +497,63 @@ export const Hero: React.FC = () => {
             transform: scale(1.2) rotate(0deg) !important;
           }
 
-          /* Generate subtle animations for various items */
-          .herringbone-row:nth-child(odd) .herringbone-item {
-            animation: herringbone-float-1 5s infinite alternate ease-in-out;
+          /* Generate symmetrical animations for various items */
+          .herringbone-item {
+            animation: herringbone-pulse 5s infinite alternate ease-in-out;
           }
-
-          .herringbone-row:nth-child(even) .herringbone-item {
-            animation: herringbone-float-2 7s infinite alternate ease-in-out;
+          
+          /* Create radial animation delay pattern */
+          .herringbone-row:nth-child(1) .herringbone-item,
+          .herringbone-row:nth-child(15) .herringbone-item {
+            animation-delay: 0s;
           }
-
-          .herringbone-item:nth-child(3n) {
-            animation-delay: 0.5s;
+          
+          .herringbone-row:nth-child(2) .herringbone-item,
+          .herringbone-row:nth-child(14) .herringbone-item {
+            animation-delay: 0.2s;
           }
-
-          .herringbone-item:nth-child(3n + 1) {
+          
+          .herringbone-row:nth-child(3) .herringbone-item,
+          .herringbone-row:nth-child(13) .herringbone-item {
+            animation-delay: 0.4s;
+          }
+          
+          .herringbone-row:nth-child(4) .herringbone-item,
+          .herringbone-row:nth-child(12) .herringbone-item {
+            animation-delay: 0.6s;
+          }
+          
+          .herringbone-row:nth-child(5) .herringbone-item,
+          .herringbone-row:nth-child(11) .herringbone-item {
+            animation-delay: 0.8s;
+          }
+          
+          .herringbone-row:nth-child(6) .herringbone-item,
+          .herringbone-row:nth-child(10) .herringbone-item {
             animation-delay: 1s;
           }
-
-          .herringbone-item:nth-child(3n + 2) {
-            animation-delay: 1.5s;
+          
+          .herringbone-row:nth-child(7) .herringbone-item,
+          .herringbone-row:nth-child(9) .herringbone-item {
+            animation-delay: 1.2s;
+          }
+          
+          .herringbone-row:nth-child(8) .herringbone-item {
+            animation-delay: 1.4s;
           }
 
-          @keyframes herringbone-float-1 {
+          @keyframes herringbone-pulse {
             0% {
-              transform: translateY(0) rotate(45deg);
+              transform: scale(0.95);
+              opacity: 0.6;
+            }
+            50% {
+              transform: scale(1.05);
+              opacity: 0.9;
             }
             100% {
-              transform: translateY(-10px) rotate(45deg);
-            }
-          }
-
-          @keyframes herringbone-float-2 {
-            0% {
-              transform: translateY(0) rotate(0deg);
-            }
-            100% {
-              transform: translateY(-8px) rotate(0deg);
+              transform: scale(0.95);
+              opacity: 0.6;
             }
           }
         `}</style>

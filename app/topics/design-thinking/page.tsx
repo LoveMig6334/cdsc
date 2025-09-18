@@ -107,8 +107,12 @@ export default function DesignThinking() {
       {/* Hero section with aero design */}
       <div className="relative bg-gradient-to-br from-yellow-400 to-yellow-200 overflow-hidden">
         <div className="absolute inset-0 z-0 overflow-hidden">
-          <div className="absolute -right-20 -top-20 w-72 h-72 bg-white/20 rounded-full blur-3xl"></div>
-          <div className="absolute -left-20 -bottom-20 w-80 h-80 bg-white/20 rounded-full blur-3xl"></div>
+          {/* Symmetrical background elements */}
+          <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-white/20 rounded-full blur-3xl"></div>
+          <div className="absolute left-1/4 top-1/4 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-white/15 rounded-full blur-3xl"></div>
+          <div className="absolute left-3/4 top-1/4 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-white/15 rounded-full blur-3xl"></div>
+          <div className="absolute left-1/4 top-3/4 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-white/15 rounded-full blur-3xl"></div>
+          <div className="absolute left-3/4 top-3/4 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-white/15 rounded-full blur-3xl"></div>
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
           <motion.div
