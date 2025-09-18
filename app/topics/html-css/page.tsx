@@ -118,43 +118,162 @@ export default function HtmlCss() {
         </div>
       </div>
 
-      {/* Hero section with aero design */}
-      <div className="relative bg-gradient-to-br from-yellow-400 to-yellow-200 overflow-hidden">
+      {/* Hero section with blueprint design */}
+      <div className="relative bg-gradient-to-br from-blue-500 to-blue-600 overflow-hidden">
         <div className="absolute inset-0 z-0 overflow-hidden">
-          {/* Symmetrical background elements */}
-          <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-white/20 rounded-full blur-3xl"></div>
-          <div className="absolute left-1/4 top-1/4 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-white/15 rounded-full blur-3xl"></div>
-          <div className="absolute left-3/4 top-1/4 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-white/15 rounded-full blur-3xl"></div>
-          <div className="absolute left-1/4 top-3/4 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-white/15 rounded-full blur-3xl"></div>
-          <div className="absolute left-3/4 top-3/4 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-white/15 rounded-full blur-3xl"></div>
+          {/* Blueprint grid background */}
+          <div className="absolute inset-0 bg-blue-500 opacity-90">
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage:
+                  "linear-gradient(to right, rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.1) 1px, transparent 1px)",
+                backgroundSize: "20px 20px",
+              }}
+            ></div>
+            {/* Large grid lines */}
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage:
+                  "linear-gradient(to right, rgba(255,255,255,0.2) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.2) 1px, transparent 1px)",
+                backgroundSize: "100px 100px",
+              }}
+            ></div>
+            {/* Blueprint circles and design elements - symmetrical */}
+            <div className="absolute top-1/4 left-1/4 w-4 h-4 rounded-full border-2 border-white/30"></div>
+            <div className="absolute top-1/4 right-1/4 w-4 h-4 rounded-full border-2 border-white/30"></div>
+            <div className="absolute bottom-1/4 left-1/4 w-4 h-4 rounded-full border-2 border-white/30"></div>
+            <div className="absolute bottom-1/4 right-1/4 w-4 h-4 rounded-full border-2 border-white/30"></div>
+
+            {/* Blueprint measurement lines */}
+            <div className="absolute top-1/3 left-10 w-20 h-px bg-white/30"></div>
+            <div className="absolute top-1/3 right-10 w-20 h-px bg-white/30"></div>
+            <div className="absolute bottom-1/3 left-10 w-20 h-px bg-white/30"></div>
+            <div className="absolute bottom-1/3 right-10 w-20 h-px bg-white/30"></div>
+          </div>
+
+          {/* Symmetrical code snippets */}
+          <div className="absolute left-[15%] top-1/2 transform -translate-y-1/2 w-60 rounded-lg overflow-hidden shadow-lg">
+            <div className="bg-gray-800 px-2 py-1 flex items-center space-x-1">
+              <div className="w-3 h-3 rounded-full bg-red-500"></div>
+              <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+              <div className="w-3 h-3 rounded-full bg-green-500"></div>
+            </div>
+            <div className="bg-gray-900 text-white p-3 font-mono text-xs">
+              <pre>
+                &lt;html&gt;{"\n"} &lt;head&gt;{"\n"} &lt;title&gt;Web
+                Academy&lt;/title&gt;{"\n"} &lt;link rel="stylesheet"
+                href="styles.css"&gt;{"\n"} &lt;/head&gt;{"\n"} &lt;body&gt;
+                {"\n"} &lt;div class="container"&gt;{"\n"} &lt;h1&gt;Next Gen
+                Web Academy&lt;/h1&gt;{"\n"} &lt;/div&gt;{"\n"} &lt;/body&gt;
+                {"\n"}&lt;/html&gt;
+              </pre>
+            </div>
+          </div>
+
+          {/* CSS Code snippet - right side */}
+          <div className="absolute right-[15%] top-1/2 transform -translate-y-1/2 w-60 rounded-lg overflow-hidden shadow-lg">
+            <div className="bg-gray-800 px-2 py-1 flex items-center space-x-1">
+              <div className="w-3 h-3 rounded-full bg-red-500"></div>
+              <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+              <div className="w-3 h-3 rounded-full bg-green-500"></div>
+            </div>
+            <div className="bg-gray-900 text-white p-3 font-mono text-xs">
+              <pre>{`@keyframes float {
+  0% { transform: translate(0); }
+  50% { transform: translate(-20px); }
+  100% { transform: translate(0); }
+}
+
+.hero-icon {
+  animation: float 3s infinite ease-in-out;
+  color: #0082f0;
+}`}</pre>
+            </div>
+          </div>
+
+          {/* Connecting arrows */}
+          <svg className="absolute inset-0 w-full h-full" style={{ zIndex: 1 }}>
+            {/* Top curved arrow - HTML to CSS */}
+            <path
+              d="M 35% 40% C 45% 20%, 55% 20%, 65% 40%"
+              stroke="#ef4444"
+              strokeWidth="3"
+              fill="none"
+              strokeDasharray="10,5"
+              markerEnd="url(#arrowhead)"
+            />
+
+            {/* Bottom curved arrow - CSS to HTML */}
+            <path
+              d="M 65% 60% C 55% 80%, 45% 80%, 35% 60%"
+              stroke="#ef4444"
+              strokeWidth="3"
+              fill="none"
+              strokeDasharray="10,5"
+              markerEnd="url(#arrowhead)"
+            />
+
+            {/* Arrow for button click - optional vertical arrow */}
+            <path
+              d="M 50% 75% L 50% 85%"
+              stroke="#fcd34d"
+              strokeWidth="3"
+              fill="none"
+              markerEnd="url(#yellowarrowhead)"
+            />
+
+            <defs>
+              <marker
+                id="arrowhead"
+                markerWidth="10"
+                markerHeight="7"
+                refX="9"
+                refY="3.5"
+                orient="auto"
+              >
+                <polygon points="0 0, 10 3.5, 0 7" fill="#ef4444" />
+              </marker>
+              <marker
+                id="yellowarrowhead"
+                markerWidth="10"
+                markerHeight="7"
+                refX="9"
+                refY="3.5"
+                orient="auto"
+              >
+                <polygon points="0 0, 10 3.5, 0 7" fill="#fcd34d" />
+              </marker>
+            </defs>
+          </svg>
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
           <motion.div
-            className="flex flex-col md:flex-row items-center justify-between gap-8"
+            className="flex flex-col items-center justify-center gap-8"
             initial="hidden"
             animate="visible"
             variants={fadeIn}
           >
-            <div className="md:w-1/2">
+            <div className="text-center max-w-3xl mx-auto">
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white text-shadow mb-4">
                 สอนการเขียน HTML และ CSS
               </h2>
-              <p className="text-lg text-yellow-50">
+              <p className="text-lg text-white">
                 เรียนรู้พื้นฐานการสร้างเว็บไซต์ด้วย HTML และ CSS
                 ตั้งแต่การสร้างโครงสร้างพื้นฐานไปจนถึงการตกแต่งให้สวยงาม
-                พร้อมนำไปพัฒนาโปรเจคของตัวเอง
               </p>
-            </div>
-            <div className="md:w-1/2 flex justify-center">
-              <div className="relative w-full max-w-md aspect-square">
-                <div className="absolute inset-0 bg-white/30 backdrop-blur-md rounded-full animate-pulse"></div>
-                <div className="absolute inset-4 bg-white/40 backdrop-blur-md rounded-full"></div>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="flex text-9xl text-white/90">
-                    <FaHtml5 className="-mr-8" />
-                    <FaCss3Alt />
-                  </div>
+              <div className="mt-8">
+                <div className="text-white text-xl mb-3">
+                  รับจำนวนจำกัด (20 คน)
                 </div>
+                <motion.button
+                  className="px-8 py-3 bg-yellow-500 text-blue-900 font-bold rounded-lg shadow-lg hover:bg-yellow-400 transition-colors"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  คลิกเพื่อสมัครเลย
+                </motion.button>
               </div>
             </div>
           </motion.div>

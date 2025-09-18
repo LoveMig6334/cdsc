@@ -60,24 +60,49 @@ export const Login = () => {
         </svg>
       </div>
 
-      {/* Tech Icon Herringbone Pattern - Top Layer */}
-      <div className="absolute inset-0 opacity-20">
+      {/* Tech Icon Symmetrical Pattern - Top Layer */}
+      <div className="absolute inset-0 opacity-30">
+        {" "}
+        {/* Increased opacity for more visibility */}
         <div className="herringbone-web-container">
-          {Array.from({ length: 10 }).map((_, rowIndex) => (
+          {Array.from({ length: 6 }).map((_, rowIndex) => (
             <div
               key={`top-${rowIndex}`}
               className="herringbone-web-row"
               style={{
-                transform: `translateY(${rowIndex * 80}px) translateX(${
-                  (rowIndex % 2) * 60
-                }px)`,
+                transform: `translateY(${rowIndex * 160}px)`, // Even more increased vertical spacing
+                display: "flex",
+                justifyContent: "center",
               }}
             >
-              {Array.from({ length: 12 }).map((_, colIndex) => {
-                const iconIndex = (rowIndex + colIndex) % 10;
+              {Array.from({ length: 6 }).map((_, colIndex) => {
+                // Add randomness to each icon's position
+                // Use a seeded random based on indices for consistent randomness
+                const randomOffsetX =
+                  ((rowIndex * 13 + colIndex * 7) % 10) * 15 - 75;
+                const randomOffsetY =
+                  ((rowIndex * 7 + colIndex * 13) % 10) * 15 - 75;
+
+                // Calculate position relative to center for symmetry
+                const centerRow = 2.5; // Middle of 6 rows
+                const centerCol = 2.5; // Middle of 6 columns
+
+                // Add randomness to the distance calculation for less perfect symmetry
+                const distanceFromCenter = Math.sqrt(
+                  Math.pow(rowIndex - centerRow + randomOffsetY * 0.01, 2) +
+                    Math.pow(colIndex - centerCol + randomOffsetX * 0.01, 2)
+                );
+
+                // Use distance to determine icon type for radial symmetry
+                const iconIndex = Math.floor(distanceFromCenter) % 10;
+
                 let Icon;
                 let color;
-                let rotation = rowIndex % 2 === 0 ? 45 : -45;
+
+                // Calculate angle for radial rotation pattern
+                const angle =
+                  Math.atan2(rowIndex - centerRow, colIndex - centerCol) *
+                  (180 / Math.PI);
 
                 switch (iconIndex) {
                   case 0:
@@ -125,24 +150,46 @@ export const Login = () => {
                     color = "text-gray-300";
                 }
 
+                // Add randomness to icon size
+                const randomSizeFactor =
+                  ((rowIndex * 11 + colIndex * 17) % 10) * 0.2;
+                const size =
+                  Math.max(35, 60 - distanceFromCenter * 1.5) +
+                  randomSizeFactor * 10;
+
+                // Calculate opacity with slight randomness
+                const randomOpacity =
+                  ((rowIndex * 19 + colIndex * 23) % 10) * 0.02;
+                const opacity =
+                  Math.max(0.4, 0.9 - distanceFromCenter * 0.1) + randomOpacity;
+
                 return (
                   <motion.div
                     key={`top-${rowIndex}-${colIndex}`}
                     className={`herringbone-web-item ${color}`}
                     style={{
-                      transform: `rotate(${rotation}deg)`,
+                      transform: `rotate(${angle}deg) translate(${randomOffsetX}px, ${randomOffsetY}px)`,
+                      opacity: opacity,
                     }}
                     animate={{
-                      y: [0, rowIndex % 2 ? 10 : -10, 0],
+                      y: [0, -8 - (iconIndex % 3) * 5, 0], // Random amplitude
+                      x: [0, (rowIndex + colIndex) % 2 ? 8 : -8, 0], // Random horizontal movement
+                      scale: [1, 1.05 + randomSizeFactor * 0.2, 1], // Random scale factor
+                      rotate: [
+                        angle,
+                        angle + (iconIndex % 2 ? 15 : -15),
+                        angle,
+                      ], // More rotation
                     }}
                     transition={{
                       repeat: Infinity,
                       repeatType: "reverse",
-                      duration: 3 + ((rowIndex + colIndex) % 4),
-                      delay: (rowIndex * 0.2 + colIndex * 0.1) % 2,
+                      duration: 3 + ((rowIndex * 7 + colIndex * 13) % 5), // Random duration
+                      // Random delay for more natural, less synchronized movement
+                      delay: (rowIndex * 0.3 + colIndex * 0.2) % 2,
                     }}
                   >
-                    <Icon size={24 + ((rowIndex * 5 + colIndex * 7) % 12)} />
+                    <Icon size={size} />
                   </motion.div>
                 );
               })}
@@ -318,30 +365,41 @@ export const Login = () => {
         </motion.div>
       </div>
 
-      {/* Style for herringbone pattern */}
+      {/* Style for symmetrical icon pattern */}
       <style jsx>{`
         .herringbone-web-container {
           position: absolute;
           width: 100%;
           height: 100%;
           overflow: hidden;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
         }
 
         .herringbone-web-row {
           display: flex;
           position: relative;
           margin-bottom: 40px;
+          width: 100%;
+          justify-content: center;
         }
 
         .herringbone-web-item {
-          margin: 0 40px;
+          margin: 0 90px; /* Significantly increased horizontal spacing between icons */
           transform-origin: center;
           transition: all 0.5s ease;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: relative; /* Enable relative positioning for random offsets */
         }
 
         .herringbone-web-item:hover {
           transform: scale(1.5) rotate(0deg) !important;
           filter: drop-shadow(0 0 8px currentColor);
+          z-index: 10;
         }
       `}</style>
     </section>
