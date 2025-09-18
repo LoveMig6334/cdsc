@@ -1,7 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { FcGoogle } from "react-icons/fc";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export const Login = () => {
   // const router = useRouter();
@@ -55,7 +54,7 @@ export const Login = () => {
           >
             รับจำนวนจำกัด (20 คน)
           </motion.h1>
-{/* 
+          {/* 
           <motion.span 
               className="absolute left-0 h-1 bg-white"
               initial={{ width: 0 }}
@@ -64,25 +63,29 @@ export const Login = () => {
               transition={{ delay: 1.5, duration: 0.8 }}
             /> */}
 
-          <motion.p 
+          <motion.p
             className="mt-4 text-base sm:text-lg md:text-xl text-blue-100"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay : 0.75, ease: "easeOut"}}>            
-            </motion.p>
+            transition={{ duration: 1, delay: 0.75, ease: "easeOut" }}
+          ></motion.p>
 
           <div className="mt-3 flex justify-center">
-              <motion.button
-                onClick={() => window.open("https://forms.gle/xcNT6FSHy1h8mN9eA")}
-                className="px-6 text-2xl font-bold sm:px-8 py-2 sm:py-3 bg-yellow-500 text-white rounded-lg shadow-lg hover:bg-yellow-600 transition duration-300 flex items-center"
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                whileHover={{ scale: 1 }}
-                transition={{ duration: 1, delay : 0.75, ease: "easeOut"}}
-              >
-                คลิกเพื่อสมัครเลย
-              </motion.button>
-            </div>
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.75, ease: "easeOut" }}
+            >
+              <Link href="/application">
+                <button
+                  className="px-6 text-2xl font-bold sm:px-8 py-2 sm:py-3 bg-yellow-500 text-white rounded-lg shadow-lg hover:bg-yellow-600 transition duration-300 flex items-center"
+                  style={{ cursor: "pointer" }}
+                >
+                  คลิกเพื่อสมัครเลย
+                </button>
+              </Link>
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>
