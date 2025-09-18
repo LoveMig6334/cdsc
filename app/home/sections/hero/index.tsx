@@ -18,16 +18,20 @@ export const Hero: React.FC = () => {
     // Calculate distance from center to create radial symmetry
     const centerRow = 7; // Middle of 15 rows
     const centerCol = 3.5; // Middle of 8 columns
-    const distanceFromCenter = Math.sqrt(Math.pow(row - centerRow, 2) + Math.pow(col - centerCol, 2));
-    return 0.4 + (Math.cos(distanceFromCenter * 0.5) * 0.3);
+    const distanceFromCenter = Math.sqrt(
+      Math.pow(row - centerRow, 2) + Math.pow(col - centerCol, 2)
+    );
+    return 0.4 + Math.cos(distanceFromCenter * 0.5) * 0.3;
   };
 
   const getSize = (row: number, col: number): number => {
     // Create a symmetrical pattern for icon size
-    const centerRow = 7; 
+    const centerRow = 7;
     const centerCol = 3.5;
-    const distanceFromCenter = Math.sqrt(Math.pow(row - centerRow, 2) + Math.pow(col - centerCol, 2));
-    return 40 - (distanceFromCenter * 1.2);
+    const distanceFromCenter = Math.sqrt(
+      Math.pow(row - centerRow, 2) + Math.pow(col - centerCol, 2)
+    );
+    return 40 - distanceFromCenter * 1.2;
   };
 
   return (
@@ -46,8 +50,8 @@ export const Hero: React.FC = () => {
                 className="herringbone-row"
                 style={{
                   transform: `translateX(${(rowIndex % 2) * 60}px)`,
-                  display: 'flex',
-                  justifyContent: 'center',
+                  display: "flex",
+                  justifyContent: "center",
                 }}
               >
                 {Array.from({ length: 8 }).map((_, colIndex) => {
@@ -56,9 +60,12 @@ export const Hero: React.FC = () => {
                   const centerRow = 7;
                   const centerCol = 3.5;
                   // Calculate position relative to center (normalized to 0-5)
-                  const distanceFromCenter = Math.sqrt(Math.pow(rowIndex - centerRow, 2) + Math.pow(colIndex - centerCol, 2));
+                  const distanceFromCenter = Math.sqrt(
+                    Math.pow(rowIndex - centerRow, 2) +
+                      Math.pow(colIndex - centerCol, 2)
+                  );
                   const iconType = Math.floor(distanceFromCenter) % 6;
-                  
+
                   let Icon;
                   let color;
 
@@ -93,7 +100,9 @@ export const Hero: React.FC = () => {
                   const size = getSize(rowIndex, colIndex);
 
                   // Calculate rotation based on position relative to center
-                  const angle = Math.atan2(rowIndex - centerRow, colIndex - centerCol) * (180 / Math.PI);
+                  const angle =
+                    Math.atan2(rowIndex - centerRow, colIndex - centerCol) *
+                    (180 / Math.PI);
 
                   return (
                     <div
@@ -501,43 +510,43 @@ export const Hero: React.FC = () => {
           .herringbone-item {
             animation: herringbone-pulse 5s infinite alternate ease-in-out;
           }
-          
+
           /* Create radial animation delay pattern */
           .herringbone-row:nth-child(1) .herringbone-item,
           .herringbone-row:nth-child(15) .herringbone-item {
             animation-delay: 0s;
           }
-          
+
           .herringbone-row:nth-child(2) .herringbone-item,
           .herringbone-row:nth-child(14) .herringbone-item {
             animation-delay: 0.2s;
           }
-          
+
           .herringbone-row:nth-child(3) .herringbone-item,
           .herringbone-row:nth-child(13) .herringbone-item {
             animation-delay: 0.4s;
           }
-          
+
           .herringbone-row:nth-child(4) .herringbone-item,
           .herringbone-row:nth-child(12) .herringbone-item {
             animation-delay: 0.6s;
           }
-          
+
           .herringbone-row:nth-child(5) .herringbone-item,
           .herringbone-row:nth-child(11) .herringbone-item {
             animation-delay: 0.8s;
           }
-          
+
           .herringbone-row:nth-child(6) .herringbone-item,
           .herringbone-row:nth-child(10) .herringbone-item {
             animation-delay: 1s;
           }
-          
+
           .herringbone-row:nth-child(7) .herringbone-item,
           .herringbone-row:nth-child(9) .herringbone-item {
             animation-delay: 1.2s;
           }
-          
+
           .herringbone-row:nth-child(8) .herringbone-item {
             animation-delay: 1.4s;
           }
