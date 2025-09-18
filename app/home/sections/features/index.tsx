@@ -166,7 +166,7 @@ export const Features = () => {
                       boxShadow: "0 5px 10px rgba(0,0,0,0.2)",
                       transition: { duration: 0.1 },
                     }}
-                    onClick={() => window.location.href = features[0].link}
+                    onClick={() => (window.location.href = features[0].link)}
                   >
                     <motion.div
                       className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-30"
@@ -177,9 +177,7 @@ export const Features = () => {
                     <div
                       className={`absolute inset-0 bg-gradient-to-br ${features[0].brightColor} opacity-0 group-hover:opacity-20 transition-opacity duration-500`}
                     />
-                    <RippleEffect
-                      color="rgba(255, 255, 255, 0.5)"
-                    />
+                    <RippleEffect color="rgba(255, 255, 255, 0.5)" />
                     <motion.div
                       variants={iconVariants}
                       whileHover="hover"
@@ -232,7 +230,7 @@ export const Features = () => {
                       boxShadow: "0 5px 10px rgba(0,0,0,0.2)",
                       transition: { duration: 0.1 },
                     }}
-                    onClick={() => window.location.href = features[1].link}
+                    onClick={() => (window.location.href = features[1].link)}
                   >
                     <motion.div
                       className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-30"
@@ -243,9 +241,7 @@ export const Features = () => {
                     <div
                       className={`absolute inset-0 bg-gradient-to-br ${features[1].brightColor} opacity-0 group-hover:opacity-20 transition-opacity duration-500`}
                     />
-                    <RippleEffect
-                      color="rgba(255, 255, 255, 0.5)"
-                    />
+                    <RippleEffect color="rgba(255, 255, 255, 0.5)" />
                     <motion.div
                       variants={iconVariants}
                       whileHover="hover"
@@ -301,7 +297,7 @@ export const Features = () => {
                       boxShadow: "0 5px 10px rgba(0,0,0,0.2)",
                       transition: { duration: 0.1 },
                     }}
-                    onClick={() => window.location.href = features[2].link}
+                    onClick={() => (window.location.href = features[2].link)}
                   >
                     <motion.div
                       className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-30"
@@ -312,9 +308,7 @@ export const Features = () => {
                     <div
                       className={`absolute inset-0 bg-gradient-to-br ${features[2].brightColor} opacity-0 group-hover:opacity-20 transition-opacity duration-500`}
                     />
-                    <RippleEffect
-                      color="rgba(255, 255, 255, 0.5)"
-                    />
+                    <RippleEffect color="rgba(255, 255, 255, 0.5)" />
                     <motion.div
                       variants={iconVariants}
                       whileHover="hover"
@@ -367,7 +361,7 @@ export const Features = () => {
                       boxShadow: "0 5px 10px rgba(0,0,0,0.2)",
                       transition: { duration: 0.1 },
                     }}
-                    onClick={() => window.location.href = features[3].link}
+                    onClick={() => (window.location.href = features[3].link)}
                   >
                     <motion.div
                       className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-30"
@@ -378,9 +372,7 @@ export const Features = () => {
                     <div
                       className={`absolute inset-0 bg-gradient-to-br ${features[3].brightColor} opacity-0 group-hover:opacity-20 transition-opacity duration-500`}
                     />
-                    <RippleEffect
-                      color="rgba(255, 255, 255, 0.5)"
-                    />
+                    <RippleEffect color="rgba(255, 255, 255, 0.5)" />
                     <motion.div
                       variants={iconVariants}
                       whileHover="hover"
