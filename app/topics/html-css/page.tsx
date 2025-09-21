@@ -267,13 +267,15 @@ export default function HtmlCss() {
                 <div className="text-white text-xl mb-3">
                   รับจำนวนจำกัด (20 คน)
                 </div>
-                <motion.button
-                  className="px-8 py-3 bg-yellow-500 text-blue-900 font-bold rounded-lg shadow-lg hover:bg-yellow-400 transition-colors"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  คลิกเพื่อสมัครเลย
-                </motion.button>
+                <Link href="/application">
+                  <motion.button
+                    className="px-8 py-3 bg-yellow-500 text-blue-900 font-bold rounded-lg shadow-lg hover:bg-yellow-400 transition-colors"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    คลิกเพื่อสมัครเลย
+                  </motion.button>
+                </Link>
               </div>
             </div>
           </motion.div>
@@ -717,9 +719,11 @@ p {
                 และลองศึกษาพื้นฐาน HTML เบื้องต้นก่อนเข้าร่วม
               </p>
               <div className="flex justify-center">
-                <button className="px-6 py-2 bg-yellow-500 hover:bg-yellow-600 text-white rounded-full transition-colors font-medium">
-                  สมัครเข้าร่วมค่าย
-                </button>
+                <Link href="/application">
+                  <button className="px-6 py-2 bg-yellow-500 hover:bg-yellow-600 text-white rounded-full transition-colors font-medium">
+                    สมัครเข้าร่วมค่าย
+                  </button>
+                </Link>
               </div>
             </div>
           </motion.div>

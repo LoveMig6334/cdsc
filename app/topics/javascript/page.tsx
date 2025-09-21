@@ -652,9 +652,11 @@ export default HelloWorld;`}
                 และลองศึกษาพื้นฐาน JavaScript เบื้องต้นเพื่อเตรียมความพร้อม
               </p>
               <div className="flex justify-center">
-                <button className="px-6 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-full transition-colors font-medium">
-                  สมัครเข้าร่วมค่าย
-                </button>
+                <Link href="/application">
+                  <button className="px-6 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-full transition-colors font-medium">
+                    สมัครเข้าร่วมค่าย
+                  </button>
+                </Link>
               </div>
             </div>
           </motion.div>
