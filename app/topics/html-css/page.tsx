@@ -154,42 +154,149 @@ export default function HtmlCss() {
           </div>
 
           {/* Symmetrical code snippets */}
-          <div className="absolute left-[15%] top-1/2 transform -translate-y-1/2 w-60 rounded-lg overflow-hidden shadow-lg">
+          <div className="absolute left-[12%] top-1/2 transform -translate-y-1/2 w-72 rounded-lg overflow-hidden shadow-lg">
             <div className="bg-gray-800 px-2 py-1 flex items-center space-x-1">
               <div className="w-3 h-3 rounded-full bg-red-500"></div>
               <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
               <div className="w-3 h-3 rounded-full bg-green-500"></div>
             </div>
-            <div className="bg-gray-900 text-white p-3 font-mono text-xs">
+            <div className="bg-gray-900 text-white p-3 font-mono text-xs leading-5">
               <pre>
-                &lt;html&gt;{"\n"} &lt;head&gt;{"\n"} &lt;title&gt;Web
-                Academy&lt;/title&gt;{"\n"} &lt;link rel="stylesheet"
-                href="styles.css"&gt;{"\n"} &lt;/head&gt;{"\n"} &lt;body&gt;
-                {"\n"} &lt;div class="container"&gt;{"\n"} &lt;h1&gt;Next Gen
-                Web Academy&lt;/h1&gt;{"\n"} &lt;/div&gt;{"\n"} &lt;/body&gt;
-                {"\n"}&lt;/html&gt;
+                <span className="text-gray-400">&lt;</span>
+                <span className="text-red-400">html</span>
+                <span className="text-gray-400">&gt;</span>
+                {"\n"}
+                <span className="text-gray-400"> &lt;</span>
+                <span className="text-red-400">head</span>
+                <span className="text-gray-400">&gt;</span>
+                {"\n"}
+                <span className="text-gray-400"> &lt;</span>
+                <span className="text-red-400">title</span>
+                <span className="text-gray-400">&gt;</span>
+                <span className="text-white">Web Academy</span>
+                <span className="text-gray-400">&lt;/</span>
+                <span className="text-red-400">title</span>
+                <span className="text-gray-400">&gt;</span>
+                {"\n"}
+                <span className="text-gray-400"> &lt;</span>
+                <span className="text-red-400">link</span>{" "}
+                <span className="text-yellow-300">rel</span>
+                <span className="text-gray-400">=</span>
+                <span className="text-green-400">"stylesheet"</span>
+                {"\n"}
+                <span className="text-gray-400"> </span>
+                <span className="text-yellow-300">href</span>
+                <span className="text-gray-400">=</span>
+                <span className="text-green-400">"styles.css"</span>
+                <span className="text-gray-400">&gt;</span>
+                {"\n"}
+                <span className="text-gray-400"> &lt;/</span>
+                <span className="text-red-400">head</span>
+                <span className="text-gray-400">&gt;</span>
+                {"\n"}
+                <span className="text-gray-400"> &lt;</span>
+                <span className="text-red-400">body</span>
+                <span className="text-gray-400">&gt;</span>
+                {"\n"}
+                <span className="text-gray-400"> &lt;</span>
+                <span className="text-red-400">div</span>{" "}
+                <span className="text-yellow-300">class</span>
+                <span className="text-gray-400">=</span>
+                <span className="text-green-400">"container"</span>
+                <span className="text-gray-400">&gt;</span>
+                {"\n"}
+                <span className="text-gray-400"> &lt;</span>
+                <span className="text-red-400">h1</span>
+                <span className="text-gray-400">&gt;</span>
+                <span className="text-white">Next Gen Web Academy</span>
+                <span className="text-gray-400">&lt;/</span>
+                <span className="text-red-400">h1</span>
+                <span className="text-gray-400">&gt;</span>
+                {"\n"}
+                <span className="text-gray-400"> &lt;/</span>
+                <span className="text-red-400">div</span>
+                <span className="text-gray-400">&gt;</span>
+                {"\n"}
+                <span className="text-gray-400"> &lt;/</span>
+                <span className="text-red-400">body</span>
+                <span className="text-gray-400">&gt;</span>
+                {"\n"}
+                <span className="text-gray-400">&lt;/</span>
+                <span className="text-red-400">html</span>
+                <span className="text-gray-400">&gt;</span>
               </pre>
             </div>
           </div>
 
           {/* CSS Code snippet - right side */}
-          <div className="absolute right-[15%] top-1/2 transform -translate-y-1/2 w-60 rounded-lg overflow-hidden shadow-lg">
+          <div className="absolute right-[7%] top-1/2 transform -translate-y-1/2 w-96 rounded-lg overflow-hidden shadow-lg">
             <div className="bg-gray-800 px-2 py-1 flex items-center space-x-1">
               <div className="w-3 h-3 rounded-full bg-red-500"></div>
               <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
               <div className="w-3 h-3 rounded-full bg-green-500"></div>
             </div>
-            <div className="bg-gray-900 text-white p-3 font-mono text-xs">
-              <pre>{`@keyframes float {
-  0% { transform: translate(0); }
-  50% { transform: translate(-20px); }
-  100% { transform: translate(0); }
-}
-
-.hero-icon {
-  animation: float 3s infinite ease-in-out;
-  color: #0082f0;
-}`}</pre>
+            <div className="bg-gray-900 text-white p-3 font-mono text-xs leading-5">
+              <pre>
+                <span className="text-purple-400">@keyframes</span>{" "}
+                <span className="text-yellow-300">float</span>{" "}
+                <span className="text-gray-400">{"{"}</span>
+                {"\n"}
+                <span className="text-gray-400"> </span>
+                <span className="text-blue-400">0%</span>{" "}
+                <span className="text-gray-400">{"{"}</span>{" "}
+                <span className="text-cyan-400">transform</span>
+                <span className="text-gray-400">:</span>{" "}
+                <span className="text-yellow-300">translate</span>
+                <span className="text-gray-400">(</span>
+                <span className="text-orange-400">0</span>
+                <span className="text-gray-400">);</span>{" "}
+                <span className="text-gray-400">{"}"}</span>
+                {"\n"}
+                <span className="text-gray-400"> </span>
+                <span className="text-blue-400">50%</span>{" "}
+                <span className="text-gray-400">{"{"}</span>{" "}
+                <span className="text-cyan-400">transform</span>
+                <span className="text-gray-400">:</span>{" "}
+                <span className="text-yellow-300">translate</span>
+                <span className="text-gray-400">(</span>
+                <span className="text-orange-400">-20px</span>
+                <span className="text-gray-400">);</span>{" "}
+                <span className="text-gray-400">{"}"}</span>
+                {"\n"}
+                <span className="text-gray-400"> </span>
+                <span className="text-blue-400">100%</span>{" "}
+                <span className="text-gray-400">{"{"}</span>{" "}
+                <span className="text-cyan-400">transform</span>
+                <span className="text-gray-400">:</span>{" "}
+                <span className="text-yellow-300">translate</span>
+                <span className="text-gray-400">(</span>
+                <span className="text-orange-400">0</span>
+                <span className="text-gray-400">);</span>{" "}
+                <span className="text-gray-400">{"}"}</span>
+                {"\n"}
+                <span className="text-gray-400">{"}"}</span>
+                {"\n"}
+                {"\n"}
+                <span className="text-green-400">.hero-icon</span>{" "}
+                <span className="text-gray-400">{"{"}</span>
+                {"\n"}
+                <span className="text-gray-400"> </span>
+                <span className="text-cyan-400">animation</span>
+                <span className="text-gray-400">:</span>{" "}
+                <span className="text-yellow-300">float</span>{" "}
+                <span className="text-orange-400">3s</span>{" "}
+                <span className="text-purple-400">infinite</span>{" "}
+                <span className="text-purple-400">ease-in-out</span>
+                <span className="text-gray-400">;</span>
+                {"\n"}
+                <span className="text-gray-400"> </span>
+                <span className="text-cyan-400">color</span>
+                <span className="text-gray-400">:</span>{" "}
+                <span className="text-orange-400">#0082f0</span>
+                <span className="text-gray-400">;</span>
+                {"\n"}
+                <span className="text-gray-400">{"}"}</span>
+              </pre>
             </div>
           </div>
 
