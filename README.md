@@ -120,10 +120,6 @@ cdsc/
 │   ├── home/                    # Landing page
 │   │   └── sections/            # Page sections
 │   ├── topics/                  # Educational modules
-│   ├── sports/                  # Sports management
-│   │   ├── medals/             # Medal dashboard
-│   │   ├── scores/             # Score management
-│   │   └── calendar/           # Events calendar
 │   ├── application/             # Student applications
 │   └── api/                     # Backend API routes
 ├── utils/                       # Utility functions
