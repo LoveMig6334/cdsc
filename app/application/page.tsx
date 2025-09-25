@@ -275,14 +275,12 @@ export default function ApplicationPage() {
                   <option value="" disabled>
                     เลือกระดับชั้น
                   </option>
+                  <option value="มัธยมศึกษาปีที่ 1">มัธยมศึกษาปีที่ 1</option>
+                  <option value="มัธยมศึกษาปีที่ 2">มัธยมศึกษาปีที่ 2</option>
+                  <option value="มัธยมศึกษาปีที่ 3">มัธยมศึกษาปีที่ 3</option>
                   <option value="มัธยมศึกษาปีที่ 4">มัธยมศึกษาปีที่ 4</option>
                   <option value="มัธยมศึกษาปีที่ 5">มัธยมศึกษาปีที่ 5</option>
                   <option value="มัธยมศึกษาปีที่ 6">มัธยมศึกษาปีที่ 6</option>
-                  <option value="ปริญญาตรีปี 1">ปริญญาตรีปี 1</option>
-                  <option value="ปริญญาตรีปี 2">ปริญญาตรีปี 2</option>
-                  <option value="ปริญญาตรีปี 3">ปริญญาตรีปี 3</option>
-                  <option value="ปริญญาตรีปี 4">ปริญญาตรีปี 4</option>
-                  <option value="อื่นๆ">อื่นๆ</option>
                 </select>
               </motion.div>
             </div>
