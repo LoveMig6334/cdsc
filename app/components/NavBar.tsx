@@ -1,6 +1,12 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { FaSignInAlt, FaBars, FaTimes, FaHome, FaBook, FaUsers, FaInfoCircle, FaCalendarAlt, FaQuestion } from 'react-icons/fa';
+import { motion } from "framer-motion";
+import { useState } from "react";
+import {
+  FaBars,
+  FaCalendarAlt,
+  FaHome,
+  FaSignInAlt,
+  FaTimes,
+} from "react-icons/fa";
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -8,7 +14,7 @@ const Navbar = () => {
   // Default values
   const appName = "CD Smart Campus";
   const loginText = "เข้าสู่ระบบ";
-  
+
   // Default navigation links with icons
   const defaultLinks = [
     { title: "หน้าหลัก", icon: <FaHome />, href: "/" },
@@ -32,10 +38,28 @@ const Navbar = () => {
           <div className="flex-shrink-0 flex items-center">
             <div className="flex items-center">
               <div className="text-blue-600 mr-2">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
                   <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="currentColor" />
-                  <path d="M2 17L12 22L22 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                  <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  <path
+                    d="M2 17L12 22L22 17"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M2 12L12 17L22 12"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
                 </svg>
               </div>
               <span className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent">
